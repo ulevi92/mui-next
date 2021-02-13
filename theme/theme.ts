@@ -11,10 +11,13 @@ const theme = createMuiTheme({});
 const darkTheme = createMuiTheme({
   palette: {
     type: "dark",
+    background: {
+      default: "#161a1a",
+    },
   },
 });
 
-// makeStyle = create classes
+// makeStyle = create classes styles
 const useStyles = makeStyles({
   transition: {
     transition: "all 0.35s ease-in-out",
@@ -33,7 +36,6 @@ const useStyles = makeStyles({
     height: "85vh",
     fontWeight: "bold",
     textTransform: "capitalize",
-    color: "#000",
     display: "flex",
     flexDirection: "column",
     flex: 1,
@@ -45,7 +47,6 @@ const useStyles = makeStyles({
     height: "85vh",
     fontWeight: "bold",
     textTransform: "capitalize",
-    color: "#000",
     display: "flex",
     flexDirection: "column",
     flex: 1,
@@ -59,7 +60,39 @@ const useStyles = makeStyles({
   },
 });
 
-// withStyle = create components
+const dropdownStyles = makeStyles((theme) => ({
+  dropdownList: {
+    position: "relative",
+    display: "none",
+    height: "100%",
+    width: "100px",
+    background: theme.palette.primary.main,
+    transition: "all 0.35s ease-in-out",
+    transform: "scaleY(0)",
+
+    "&.active": {
+      position: "absolute",
+      display: "flex",
+      flexDirection: "column",
+      transform: "scaleY(1)",
+    },
+  },
+
+  dropdownItem: {
+    position: "relative",
+    background: theme.palette.background.default,
+    transform: "scaleX(0)",
+    transition: "all 0.35s ease-in-out",
+    width: "100%",
+    "&.active": {
+      display: "flex",
+      flexDirection: "column",
+      transform: "scaleY(1)",
+    },
+  },
+}));
+
+// withStyle = create components styles
 
 const SorryButton = withStyles((theme) => ({
   root: {
@@ -75,4 +108,4 @@ const SorryButton = withStyles((theme) => ({
   },
 }))(Button);
 
-export { theme, darkTheme, useStyles, SorryButton };
+export { theme, darkTheme, useStyles, dropdownStyles, SorryButton };

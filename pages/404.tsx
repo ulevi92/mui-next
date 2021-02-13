@@ -11,11 +11,11 @@ import SentimentVeryDissatisfiedIcon from "@material-ui/icons/SentimentVeryDissa
 const NotFound = () => {
   const classes = useStyles();
 
-    useEffect(() => {
-      setTimeout(() => {
-        router.push("/");
-      }, 3500);
-    }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      router.push("/");
+    }, 3500);
+  }, []);
 
   const onButtonClick = () => router.push("/");
 

@@ -4,6 +4,7 @@ import Head from "next/head";
 import ContextStore from "../hooks/ContextStore";
 import Layout from "../components/Layout";
 import { CssBaseline } from "@material-ui/core";
+import ThemeStore from "../hooks/ThemeStore";
 
 function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -24,10 +25,12 @@ function App({ Component, pageProps }: AppProps) {
         />
       </Head>
       <ContextStore>
-        <Layout>
-          <CssBaseline />
-          <Component {...pageProps} />
-        </Layout>
+        <ThemeStore>
+          <Layout>
+            <CssBaseline />
+            <Component {...pageProps} />
+          </Layout>
+        </ThemeStore>
       </ContextStore>
     </>
   );

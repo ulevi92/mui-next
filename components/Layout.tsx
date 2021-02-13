@@ -1,22 +1,21 @@
+import { FC, useEffect } from "react";
 import { ThemeProvider } from "@material-ui/core";
-import { FC, useEffect, useState } from "react";
-import { useStore } from "../hooks/ContextStore";
+
+import { useThemeStore } from "../hooks/ThemeStore";
+
 import { darkTheme, theme } from "../theme/theme";
 
 import Navbar from "./navbar/Navbar";
 
 const Layout: FC = ({ children }) => {
-  const [darkMode, setDarkMode] = useState(false);
-  const store = useStore();
-
   useEffect(() => {
-    setDarkMode(JSON.parse(window.localStorage.getItem("dark-mode")));
-  }, [store.darkMode]);
+    window.onload = () => {};
+  }, []);
 
-  console.log("did render");
+  const store = useThemeStore();
 
   return (
-    <ThemeProvider theme={darkMode ? darkTheme : theme}>
+    <ThemeProvider theme={store.darkMode ? darkTheme : theme}>
       <Navbar />
       {children}
     </ThemeProvider>
