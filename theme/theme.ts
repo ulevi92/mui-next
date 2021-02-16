@@ -19,7 +19,10 @@ const darkTheme = createMuiTheme({
 
 // makeStyle = create classes styles
 const useStyles = makeStyles({
-  transition: {
+  iconBox: {
+    textAlign: "end",
+  },
+  icon: {
     transition: "all 0.35s ease-in-out",
   },
 
@@ -92,6 +95,33 @@ const dropdownStyles = makeStyles((theme) => ({
   },
 }));
 
+const notLoggedStyle = makeStyles((theme) => ({
+  centerButtons: {
+    marginRight: 4,
+
+    "&:last-of-type": {
+      marginRight: 0,
+    },
+  },
+  authButtons: {
+    marginRight: 24,
+
+    "&:last-of-type": {
+      marginRight: 0,
+    },
+  },
+}));
+
+const loggedStyle = makeStyles((theme) => ({
+  btn: {
+    marginRight: 4,
+
+    "&:last-of-type": {
+      marginRight: 0,
+    },
+  },
+}));
+
 // withStyle = create components styles
 
 const SorryButton = withStyles((theme) => ({
@@ -108,4 +138,12 @@ const SorryButton = withStyles((theme) => ({
   },
 }))(Button);
 
-export { theme, darkTheme, useStyles, dropdownStyles, SorryButton };
+export {
+  theme,
+  darkTheme,
+  useStyles,
+  dropdownStyles,
+  notLoggedStyle,
+  loggedStyle,
+  SorryButton,
+};

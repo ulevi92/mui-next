@@ -21,9 +21,7 @@ import Brightness4Icon from "@material-ui/icons/Brightness4";
 import { useStore } from "../../hooks/StoreContext";
 
 //import components
-import Search from "./Search";
-import NavButton from "./NavButton";
-import Dropdown from "./Dropdown";
+import RenderMenu from "./Navbar.helper";
 
 const useNavStyles = makeStyles((theme) => ({
   offset: theme.mixins.toolbar,
@@ -37,7 +35,7 @@ const Navbar = () => {
   const classes = useStyles();
   const navClasses = useNavStyles();
 
-  //handle clicks
+  //handle onClick
   const onLogoClick = () => router.push("/");
   const onIconClick = () => store.setDarkMode();
 
@@ -45,8 +43,6 @@ const Navbar = () => {
   const notLoggedButton = [];
   const LoggedButton = [];
   // const dropdownPaths = ["/", "/"];
-
-  // const renderButtons = store
 
   //render component with map
   const renderNavContent = store.logged ? "" : "";
@@ -56,20 +52,21 @@ const Navbar = () => {
       <AppBar position="sticky">
         <Toolbar>
           <Grid item md={1}>
-            {/* <IconButton onClick={onLogoClick}> */}
-            <Image src="/logo.png" width="75" height="75" alt="logo" />
-            {/* </IconButton> */}
+            <IconButton onClick={onLogoClick}>
+              <Image src="/logo.png" width="75" height="75" alt="logo" />
+            </IconButton>
           </Grid>
 
           <Grid item container md={10}>
-            <Grid item md={11}></Grid>
-            <Grid item md={1}>
-              <Dropdown />
+            <Grid item md={12}>
+              <RenderMenu />
             </Grid>
+            {/* <Grid item md={1}>
+              <Dropdown />
+            </Grid> */}
           </Grid>
-
-          <Grid item md={1}>
-            <IconButton onClick={onIconClick} className={classes.transition}>
+          <Grid item md={1} className={classes.iconBox}>
+            <IconButton onClick={onIconClick} className={classes.icon}>
               {store.darkMode ? <Brightness4Icon /> : <Brightness7Icon />}
             </IconButton>
           </Grid>
