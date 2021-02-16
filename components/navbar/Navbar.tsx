@@ -18,8 +18,7 @@ import Brightness7Icon from "@material-ui/icons/Brightness7";
 import Brightness4Icon from "@material-ui/icons/Brightness4";
 
 //import store
-import { useStore } from "../../hooks/ContextStore";
-import { useThemeStore } from "../../hooks/ThemeStore";
+import { useStore } from "../../hooks/StoreContext";
 
 //import components
 import Search from "./Search";
@@ -33,19 +32,21 @@ const useNavStyles = makeStyles((theme) => ({
 const Navbar = () => {
   //contexts
   const store = useStore();
-  const themeStore = useThemeStore();
+
   //styles
   const classes = useStyles();
   const navClasses = useNavStyles();
 
   //handle clicks
   const onLogoClick = () => router.push("/");
-  const onIconClick = () => themeStore.setAndSaveDarkMode();
+  const onIconClick = () => store.setDarkMode();
 
   //list for rendering components
   const notLoggedButton = [];
   const LoggedButton = [];
   // const dropdownPaths = ["/", "/"];
+
+  // const renderButtons = store
 
   //render component with map
   const renderNavContent = store.logged ? "" : "";
@@ -69,7 +70,7 @@ const Navbar = () => {
 
           <Grid item md={1}>
             <IconButton onClick={onIconClick} className={classes.transition}>
-              {themeStore.darkMode ? <Brightness4Icon /> : <Brightness7Icon />}
+              {store.darkMode ? <Brightness4Icon /> : <Brightness7Icon />}
             </IconButton>
           </Grid>
         </Toolbar>

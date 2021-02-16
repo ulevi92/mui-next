@@ -34,9 +34,7 @@ const Dropdown: FC<DropdownProps> = ({ path }) => {
   return (
     <>
       <Button onClick={onDropdownClick}>Dropdown</Button>
-      <div ref={listRef} className={classes.dropdownList}>
-        {renderList}
-      </div>
+      <div ref={listRef} className={classes.dropdownList}></div>
     </>
   );
 };

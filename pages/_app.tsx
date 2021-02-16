@@ -1,10 +1,9 @@
 import type { AppProps /*, AppContext */ } from "next/app";
 import { useEffect } from "react";
 import Head from "next/head";
-import ContextStore from "../hooks/ContextStore";
+import ContextStore from "../hooks/StoreContext";
 import Layout from "../components/Layout";
 import { CssBaseline } from "@material-ui/core";
-import ThemeStore from "../hooks/ThemeStore";
 
 function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -25,12 +24,10 @@ function App({ Component, pageProps }: AppProps) {
         />
       </Head>
       <ContextStore>
-        <ThemeStore>
-          <Layout>
-            <CssBaseline />
-            <Component {...pageProps} />
-          </Layout>
-        </ThemeStore>
+        <Layout>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </Layout>
       </ContextStore>
     </>
   );
