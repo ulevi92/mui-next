@@ -11,15 +11,10 @@ const Dropdown: FC = () => {
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    document.body.addEventListener(
-      "click",
-      () => {
-        setActive(false);
-      },
-      { capture: true }
-    );
-  }, []);
+    window.addEventListener("click", () => setActive(false));
 
+    return window.removeEventListener("click", () => setActive(false));
+  }, []);
   const onButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     setActive(!active);
