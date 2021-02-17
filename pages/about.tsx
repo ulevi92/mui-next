@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { useAboutStyles } from "../theme/theme";
 import { Grid, SvgIcon, Typography } from "@material-ui/core";
 import CheckIcon from "@material-ui/icons/Check";
@@ -47,6 +49,14 @@ const About = () => {
           {renderCreatedList}
         </Grid>
       </Grid>
+      <Typography className={classes.h1} variant="h4">
+        <a
+          target="_blank"
+          href="https://www.upwork.com/o/profiles/users/~0184fa6042c85fa083/"
+        >
+          Upwork profile
+        </a>
+      </Typography>
     </>
   );
 };

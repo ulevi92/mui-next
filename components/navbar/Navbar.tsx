@@ -1,8 +1,7 @@
 import router from "next/router";
 import Image from "next/image";
 
-//import styles
-import { useStyles } from "../../theme/theme";
+import { useNavbarStyles } from "../../theme/theme";
 
 //import material-ui
 import {
@@ -11,6 +10,7 @@ import {
   IconButton,
   Toolbar,
   makeStyles,
+  Button,
 } from "@material-ui/core";
 //import material-ui icons
 
@@ -23,17 +23,12 @@ import { useStore } from "../../hooks/StoreContext";
 //import components
 import RenderMenu from "./Navbar.helper";
 
-const useNavStyles = makeStyles((theme) => ({
-  offset: theme.mixins.toolbar,
-}));
-
 const Navbar = () => {
   //contexts
   const store = useStore();
 
   //styles
-  const classes = useStyles();
-  const navClasses = useNavStyles();
+  const classes = useNavbarStyles();
 
   //handle onClick
   const onLogoClick = () => router.push("/");
@@ -57,14 +52,10 @@ const Navbar = () => {
             </IconButton>
           </Grid>
 
-          <Grid container alignItems="center" md={10}>
-            <Grid item md={12}>
-              <RenderMenu />
-            </Grid>
-            {/* <Grid item md={1}>
-              <Dropdown />
-            </Grid> */}
+          <Grid item container md={10} alignItems="center">
+            <RenderMenu />
           </Grid>
+
           <Grid item md={1} className={classes.iconBox}>
             <IconButton onClick={onIconClick} className={classes.icon}>
               {store.darkMode ? <Brightness4Icon /> : <Brightness7Icon />}
@@ -72,7 +63,7 @@ const Navbar = () => {
           </Grid>
         </Toolbar>
       </AppBar>
-      <div className={navClasses.offset} />
+      <div className={classes.offset} />
     </Grid>
   );
 };

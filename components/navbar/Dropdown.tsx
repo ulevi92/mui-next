@@ -3,12 +3,14 @@ import Link from "next/link";
 
 import { Button } from "@material-ui/core";
 
-import { dropdownStyles } from "../../theme/theme";
+import { useDropdownStyles } from "../../theme/theme";
 
 const Dropdown: FC = () => {
   const [active, setActive] = useState(false);
 
   const menuRef = useRef<HTMLUListElement>(null);
+
+  const classes = useDropdownStyles();
 
   useEffect(() => {
     window.addEventListener("click", () => setActive(false));
@@ -24,9 +26,7 @@ const Dropdown: FC = () => {
   return (
     <>
       <Button onClick={onButtonClick}>Dropdown</Button>
-      <ul ref={menuRef}>
-        
-      </ul>
+      <ul ref={menuRef}></ul>
     </>
   );
 };

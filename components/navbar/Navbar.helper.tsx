@@ -53,7 +53,7 @@ const RenderMenu: FC = () => {
   );
 
   const renderButtons = !store.logged ? (
-    <Grid item container>
+    <>
       <Grid item md={8}>
         {LoggedButtons}
       </Grid>
@@ -64,19 +64,17 @@ const RenderMenu: FC = () => {
       <Grid item md={1}>
         <Dropdown />
       </Grid>
-    </Grid>
+    </>
   ) : (
-    <Grid item container>
-      <Grid item container>
-        <Grid item md={5} />
-        <Grid item md={5}>
-          {centerButtons}
-        </Grid>
-        <Grid item md={2}>
-          {notLoggedButtons}
-        </Grid>
+    <>
+      <Grid item md={5} />
+      <Grid item md={5}>
+        {centerButtons}
       </Grid>
-    </Grid>
+      <Grid item md={2}>
+        {notLoggedButtons}
+      </Grid>
+    </>
   );
 
   return <>{renderButtons}</>;

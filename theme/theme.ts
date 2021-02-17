@@ -34,13 +34,6 @@ const darkTheme = createMuiTheme({
 
 // makeStyle = create classes styles
 const useStyles = makeStyles({
-  iconBox: {
-    textAlign: "end",
-  },
-  icon: {
-    transition: "all 0.35s ease-in-out",
-  },
-
   btn: {
     borderRadius: 0,
   },
@@ -81,7 +74,20 @@ const useAboutStyles = makeStyles({
   },
 });
 
-const useNavbarStyles = makeStyles({});
+const useNavbarStyles = makeStyles((theme) => ({
+  offset: theme.mixins.toolbar,
+  container: {
+    alignItems: "center",
+  },
+
+  iconBox: {
+    textAlign: "end",
+  },
+
+  icon: {
+    transition: "all 0.35s ease-in-out",
+  },
+}));
 
 const useDropdownStyles = makeStyles((theme) => ({
   dropdownList: {
@@ -162,6 +168,7 @@ export {
   theme,
   darkTheme,
   useStyles,
+  useNavbarStyles,
   useAboutStyles,
   useDropdownStyles,
   useNotLoggedStyle,
