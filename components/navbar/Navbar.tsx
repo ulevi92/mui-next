@@ -57,7 +57,7 @@ const Navbar = () => {
             </IconButton>
           </Grid>
 
-          <Grid item container md={10}>
+          <Grid container alignItems="center" md={10}>
             <Grid item md={12}>
               <RenderMenu />
             </Grid>

@@ -4,7 +4,7 @@ import router from "next/router";
 import { Button, Grid } from "@material-ui/core";
 
 //import style
-import { notLoggedStyle, loggedStyle } from "../../theme/theme";
+import { useNotLoggedStyle, useLoggedStyle } from "../../theme/theme";
 
 //import store
 import { useStore } from "../../hooks/StoreContext";
@@ -15,7 +15,7 @@ const RenderMenu: FC = () => {
   const store = useStore();
 
   //render not logged in menu
-  const notLoggedStyles = notLoggedStyle();
+  const notLoggedStyles = useNotLoggedStyle();
 
   const centerButtons = ["download", "help"].map((item, i) => (
     <Button
@@ -38,7 +38,7 @@ const RenderMenu: FC = () => {
 
   //render logged in menu
 
-  const loggedStyles = loggedStyle();
+  const loggedStyles = useLoggedStyle();
 
   const LoggedButtons = ["home", "browse", "library", "about"].map(
     (item, i) => (

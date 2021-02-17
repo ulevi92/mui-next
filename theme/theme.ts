@@ -73,7 +73,7 @@ const useStyles = makeStyles({
   },
 });
 
-const aboutStyles = makeStyles({
+const useAboutStyles = makeStyles({
   h1: {
     textAlign: "center",
     marginTop: 45,
@@ -81,7 +81,9 @@ const aboutStyles = makeStyles({
   },
 });
 
-const dropdownStyles = makeStyles((theme) => ({
+const useNavbarStyles = makeStyles({});
+
+const useDropdownStyles = makeStyles((theme) => ({
   dropdownList: {
     position: "relative",
     display: "none",
@@ -113,7 +115,7 @@ const dropdownStyles = makeStyles((theme) => ({
   },
 }));
 
-const notLoggedStyle = makeStyles((theme) => ({
+const useNotLoggedStyle = makeStyles((theme) => ({
   centerButtons: {
     marginRight: 4,
 
@@ -130,7 +132,7 @@ const notLoggedStyle = makeStyles((theme) => ({
   },
 }));
 
-const loggedStyle = makeStyles((theme) => ({
+const useLoggedStyle = makeStyles((theme) => ({
   btn: {
     marginRight: 4,
 
@@ -160,9 +162,9 @@ export {
   theme,
   darkTheme,
   useStyles,
-  aboutStyles,
-  dropdownStyles,
-  notLoggedStyle,
-  loggedStyle,
+  useAboutStyles,
+  useDropdownStyles,
+  useNotLoggedStyle,
+  useLoggedStyle,
   SorryButton,
 };

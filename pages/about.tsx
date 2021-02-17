@@ -1,9 +1,9 @@
-import { aboutStyles } from "../theme/theme";
+import { useAboutStyles } from "../theme/theme";
 import { Grid, SvgIcon, Typography } from "@material-ui/core";
 import CheckIcon from "@material-ui/icons/Check";
 
 const About = () => {
-  const classes = aboutStyles();
+  const classes = useAboutStyles();
 
   const renderCreatedList = [
     "React.js",

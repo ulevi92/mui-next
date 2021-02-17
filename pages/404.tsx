@@ -4,7 +4,7 @@ import router from "next/router";
 import { SorryButton, useStyles } from "../theme/theme";
 
 //import material components
-import { Button } from "@material-ui/core";
+import { Button, SvgIcon } from "@material-ui/core";
 
 import SentimentVeryDissatisfiedIcon from "@material-ui/icons/SentimentVeryDissatisfied";
 
@@ -14,14 +14,16 @@ const NotFound = () => {
   useEffect(() => {
     setTimeout(() => {
       router.push("/");
-    }, 3500);
+    }, 2500);
   }, []);
 
   const onButtonClick = () => router.push("/");
 
   return (
     <div className={classes[404]}>
-      <SentimentVeryDissatisfiedIcon className={classes.iconLarge} />
+      <SvgIcon>
+        <SentimentVeryDissatisfiedIcon className={classes.iconLarge} />
+      </SvgIcon>
       <h1>Oops the page you try to reach in broken or not exist</h1>
       <h2>error 404</h2>
       <SorryButton
