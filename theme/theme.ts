@@ -6,13 +6,28 @@ import {
 } from "@material-ui/core/styles";
 
 // Create a theme instance.
-const theme = createMuiTheme({});
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#2d9bef",
+    },
+    secondary: {
+      main: "#9b2def",
+    },
+  },
+});
 
 const darkTheme = createMuiTheme({
   palette: {
     type: "dark",
     background: {
       default: "#161a1a",
+    },
+    primary: {
+      main: "#2dceef",
+    },
+    secondary: {
+      main: "#9b2def",
     },
   },
 });
@@ -56,10 +71,13 @@ const useStyles = makeStyles({
     justifyContent: "center",
     alignItems: "center",
   },
+});
 
-  about: {
-    background: "#000",
-    height: "100vh",
+const aboutStyles = makeStyles({
+  h1: {
+    textAlign: "center",
+    marginTop: 45,
+    marginBottom: 45,
   },
 });
 
@@ -142,6 +160,7 @@ export {
   theme,
   darkTheme,
   useStyles,
+  aboutStyles,
   dropdownStyles,
   notLoggedStyle,
   loggedStyle,
