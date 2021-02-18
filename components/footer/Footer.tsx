@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, SvgIcon, Typography } from "@material-ui/core";
 import CardList from "./CardList";
 
 import {
@@ -10,6 +10,9 @@ import {
 } from "./Footer.helper";
 import { useFooterStyles } from "../../theme/theme";
 import SocialIcons from "./SocialIcons";
+import Credit from "./Credit";
+
+import CopyrightIcon from "@material-ui/icons/Copyright";
 
 const Footer = () => {
   const classes = useFooterStyles();
@@ -59,11 +62,17 @@ const Footer = () => {
         </Grid>
       </Grid>
       <Grid container>
-        <Grid item md={3}>
-          a
+        <Grid item container md={8}>
+          <Grid item md={1} />
+          <Grid item md={11} className={classes.creditContainer}>
+            <Credit />
+          </Grid>
         </Grid>
-        <Grid item md={9}>
-          a
+        <Grid item container md={4} justify="center">
+          <SvgIcon>
+            <CopyrightIcon />
+          </SvgIcon>
+          <Typography className={classes.copyrightName}>Uria Levi</Typography>
         </Grid>
       </Grid>
     </Grid>

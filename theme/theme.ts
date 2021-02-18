@@ -213,6 +213,33 @@ const useFooterStyles = makeStyles((theme) => ({
       opacity: 0.65,
     },
   },
+
+  creditContainer: {
+    display: "flex",
+  },
+
+  creditItem: {
+    marginTop: 45,
+    cursor: "pointer",
+    marginRight: 20,
+    transition: "all 0.35s ease-in-out",
+
+    "&:last-of-type": {
+      marginRight: 0,
+    },
+
+    "&:hover": {
+      color: theme.palette.primary.main,
+    },
+  },
+
+  copyrightContainer: {
+    textAlign: "center",
+  },
+
+  copyrightName: {
+    marginLeft: 15,
+  },
 }));
 
 // withStyle = create components styles
