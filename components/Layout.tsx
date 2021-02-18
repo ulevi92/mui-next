@@ -5,6 +5,7 @@ import { darkTheme, theme } from "../theme/theme";
 
 import Navbar from "./navbar/Navbar";
 import { useStore } from "../hooks/StoreContext";
+import Footer from "./footer/Footer";
 
 const Layout: FC = ({ children }) => {
   const store = useStore();
@@ -13,6 +14,7 @@ const Layout: FC = ({ children }) => {
     <ThemeProvider theme={store.darkMode ? darkTheme : theme}>
       <Navbar />
       {children}
+      <Footer />
     </ThemeProvider>
   );
 };

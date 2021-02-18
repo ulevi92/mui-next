@@ -45,7 +45,7 @@ const useStyles = makeStyles({
   },
 
   404: {
-    height: "85vh",
+    height: "100vh",
     fontWeight: "bold",
     textTransform: "capitalize",
     display: "flex",
@@ -175,6 +175,55 @@ const useLoggedStyle = makeStyles((theme) => ({
   },
 }));
 
+const useFooterStyles = makeStyles((theme) => ({
+  footerContainer: {
+    marginTop: 20,
+  },
+
+  cardContainer: {
+    marginRight: 50,
+    marginLeft: 50,
+
+    "&:last-of-type": {
+      marginRight: 0,
+    },
+
+    "&:first-of-type": {
+      marginLight: 0,
+    },
+  },
+
+  cardTitle: {
+    marginBottom: 15,
+  },
+
+  cardItem: {
+    cursor: "pointer",
+    marginBottom: "15px",
+    textTransform: "capitalize",
+    transition: "all 0.35s ease-in-out",
+    fontWeight: 500,
+
+    "&:hover": {
+      color: theme.palette.primary.main,
+    },
+
+    "&:last-of-type": {
+      marginBottom: 0,
+    },
+  },
+
+  socialIcons: {
+    marginRight: 20,
+    transition: "all 0.35 ease-in-out",
+    color: theme.palette.primary.main,
+
+    "&:hover": {
+      opacity: 0.65,
+    },
+  },
+}));
+
 // withStyle = create components styles
 
 const SorryButton = withStyles((theme) => ({
@@ -200,5 +249,6 @@ export {
   useDropdownStyles,
   useNotLoggedStyle,
   useLoggedStyle,
+  useFooterStyles,
   SorryButton,
 };

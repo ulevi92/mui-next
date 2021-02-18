@@ -1,5 +1,5 @@
 import { FC, useRef, useState, useEffect, createRef } from "react";
-import Link from "next/link";
+import router from "next/router";
 
 import { Button } from "@material-ui/core";
 
@@ -45,10 +45,18 @@ const Dropdown: FC = () => {
     <div style={{ position: "relative" }}>
       <Button onClick={onButtonClick}>Dropdown</Button>
       <ul ref={menuRef} className={classes.ul}>
-        <Button ref={accBtnRef} className={classes.btn}>
+        <Button
+          ref={accBtnRef}
+          className={classes.btn}
+          onClick={() => router.push("/account")}
+        >
           account
         </Button>
-        <Button ref={logoutBtnRef} className={classes.btn}>
+        <Button
+          ref={logoutBtnRef}
+          className={classes.btn}
+          // onClick={} will logout
+        >
           logout
         </Button>
       </ul>
