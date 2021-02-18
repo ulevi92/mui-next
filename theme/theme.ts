@@ -93,33 +93,57 @@ const useNavbarStyles = makeStyles((theme) => ({
 const useDropdownStyles = makeStyles((theme) => ({
   ul: {
     display: "none",
-    animation: ` $openMenu 300ms ${theme.transitions.easing.easeInOut}`,
     height: 100,
+    transition: "all 0.5s ease-in-out",
+    padding: 0,
+    marginBottom: 0,
 
     "&.active": {
-      display: "block",
+      background: "linear-gradient(to top, #2178bb, #2d9bef)",
+      animation: `$growDown 350ms ${theme.transitions.easing.easeInOut}`,
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-around",
       position: "absolute",
       width: "100%",
-      background: "red",
     },
   },
-  li: {
-    listStyle: "none",
+
+  btn: {
     display: "none",
+    borderRadius: 0,
 
     "&.active": {
       display: "block",
+      animation: `$itemMove 350ms ${theme.transitions.easing.easeInOut} 300ms`,
     },
   },
-  "@keyframs openMenu": {
+
+  "@keyframes growDown": {
     "0%": {
-      transform: "scale(0)",
+      transform: "translateY(-50px)",
     },
+
     "80%": {
-      transform: "scale(1.2)",
+      transform: "translateY(15px)",
     },
+
     "100%": {
-      transform: "scale(1)",
+      transform: "translateY(0)",
+    },
+  },
+
+  "@keyframes itemMove": {
+    "0%": {
+      transform: "translateX(5px)",
+    },
+
+    "80%": {
+      transform: "translateX(-5px)",
+    },
+
+    "100%": {
+      transform: "translateX(0)",
     },
   },
 }));

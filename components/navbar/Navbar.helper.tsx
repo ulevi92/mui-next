@@ -52,7 +52,7 @@ const RenderMenu: FC = () => {
     )
   );
 
-  const renderButtons = !store.logged ? (
+  const renderButtons = store.logged ? (
     <>
       <Grid item md={8}>
         {LoggedButtons}

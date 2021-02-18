@@ -1,4 +1,4 @@
-import { FC, useRef, useState, useEffect } from "react";
+import { FC, useRef, useState, useEffect, createRef } from "react";
 import Link from "next/link";
 
 import { Button } from "@material-ui/core";
@@ -7,11 +7,12 @@ import { useDropdownStyles } from "../../theme/theme";
 
 const Dropdown: FC = () => {
   const [active, setActive] = useState(false);
-  // const [];
-
-  const menuRef = useRef<HTMLUListElement>(null);
 
   const classes = useDropdownStyles();
+
+  const menuRef = useRef<HTMLUListElement>(null);
+  const accBtnRef = useRef<HTMLButtonElement>(null);
+  const logoutBtnRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     window.addEventListener("click", () => setActive(false));
@@ -20,9 +21,19 @@ const Dropdown: FC = () => {
   }, []);
 
   useEffect(() => {
-    active
-      ? menuRef.current.classList.add("active")
-      : menuRef.current.classList.remove("active");
+    const setClass = () => {
+      menuRef.current.classList.add("active");
+      accBtnRef.current.classList.add("active");
+      logoutBtnRef.current.classList.add("active");
+    };
+
+    const rmClass = () => {
+      menuRef.current.classList.remove("active");
+      accBtnRef.current.classList.remove("active");
+      logoutBtnRef.current.classList.remove("active");
+    };
+
+    return active ? setClass() : rmClass();
   }, [active]);
 
   const onButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -34,9 +45,13 @@ const Dropdown: FC = () => {
     <div style={{ position: "relative" }}>
       <Button onClick={onButtonClick}>Dropdown</Button>
       <ul ref={menuRef} className={classes.ul}>
-        <li className={classes.li}>a</li>
+        <Button ref={accBtnRef} className={classes.btn}>
+          account
+        </Button>
+        <Button ref={logoutBtnRef} className={classes.btn}>
+          logout
+        </Button>
       </ul>
-      {active ? "true" : "false"}
     </div>
   );
 };
