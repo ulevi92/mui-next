@@ -40,12 +40,12 @@ const useStyles = makeStyles({
   },
 
   iconLarge: {
-    width: 150,
-    height: 150,
+    width: 200,
+    height: 200,
   },
 
   404: {
-    height: "100vh",
+    height: "85vh",
     fontWeight: "bold",
     textTransform: "capitalize",
     display: "flex",
@@ -156,6 +156,7 @@ const useNotLoggedStyle = makeStyles((theme) => ({
       marginRight: 0,
     },
   },
+
   authButtons: {
     marginRight: 24,
 
@@ -180,19 +181,6 @@ const useFooterStyles = makeStyles((theme) => ({
     marginTop: 20,
   },
 
-  cardContainer: {
-    marginRight: 50,
-    marginLeft: 50,
-
-    "&:last-of-type": {
-      marginRight: 0,
-    },
-
-    "&:first-of-type": {
-      marginLight: 0,
-    },
-  },
-
   cardTitle: {
     marginBottom: 15,
   },
@@ -211,6 +199,10 @@ const useFooterStyles = makeStyles((theme) => ({
     "&:last-of-type": {
       marginBottom: 0,
     },
+  },
+
+  iconContainer: {
+    textAlign: "center",
   },
 
   socialIcons: {

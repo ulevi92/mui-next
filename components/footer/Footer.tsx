@@ -30,30 +30,31 @@ const Footer = () => {
             alignItems="center"
             md={8}
           >
-            <div className={classes.cardContainer}>
+            <Grid item md={4} xs={12}>
               <Typography variant="h6" className={classes.cardTitle}>
                 MusicSurfic
               </Typography>
               <CardList title="MusicSurfic" list={communitiesItems} />
-            </div>
+            </Grid>
 
-            <div className={classes.cardContainer}>
+            <Grid item md={4} xs={12}>
               <Typography variant="h6" className={classes.cardTitle}>
                 Community
               </Typography>
               <CardList title="Community" list={musicSurficItems} />
-            </div>
+            </Grid>
 
-            <div className={classes.cardContainer}>
+            <Grid item md={4} xs={12}>
               <Typography variant="h6" className={classes.cardTitle}>
                 Useful Links
               </Typography>
               <CardList title="Usefuf Links" list={usefulLinksItems} />
-            </div>
+            </Grid>
           </Grid>
           <Grid item md={1} />
         </Grid>
-        <Grid item md={4}>
+
+        <Grid item md={4} className={classes.iconContainer}>
           <SocialIcons />
         </Grid>
       </Grid>
