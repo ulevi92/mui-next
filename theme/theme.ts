@@ -208,7 +208,6 @@ const useFooterStyles = makeStyles((theme) => ({
   socialIcons: {
     marginRight: 20,
     transition: "all 0.35 ease-in-out",
-    color: theme.palette.primary.main,
 
     "&:hover": {
       opacity: 0.65,

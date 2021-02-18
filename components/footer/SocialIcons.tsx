@@ -10,13 +10,13 @@ const SocialIcons = () => {
 
   return (
     <>
-      <IconButton className={classes.socialIcons}>
+      <IconButton color="primary" className={classes.socialIcons}>
         <FacebookIcon />
       </IconButton>
-      <IconButton className={classes.socialIcons}>
+      <IconButton color="primary" className={classes.socialIcons}>
         <TwitterIcon />
       </IconButton>
-      <IconButton className={classes.socialIcons}>
+      <IconButton color="primary" className={classes.socialIcons}>
         <InstagramIcon />
       </IconButton>
     </>
