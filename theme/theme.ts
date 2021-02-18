@@ -33,6 +33,7 @@ const darkTheme = createMuiTheme({
 });
 
 // makeStyle = create classes styles
+
 const useStyles = makeStyles({
   btn: {
     borderRadius: 0,
@@ -90,33 +91,35 @@ const useNavbarStyles = makeStyles((theme) => ({
 }));
 
 const useDropdownStyles = makeStyles((theme) => ({
-  dropdownList: {
-    position: "relative",
+  ul: {
     display: "none",
-    height: "100%",
-    width: "100px",
-    background: theme.palette.primary.main,
-    transition: "all 0.35s ease-in-out",
-    transform: "scaleY(0)",
+    animation: ` $openMenu 300ms ${theme.transitions.easing.easeInOut}`,
+    height: 100,
 
     "&.active": {
+      display: "block",
       position: "absolute",
-      display: "flex",
-      flexDirection: "column",
-      transform: "scaleY(1)",
+      width: "100%",
+      background: "red",
     },
   },
+  li: {
+    listStyle: "none",
+    display: "none",
 
-  dropdownItem: {
-    position: "relative",
-    background: theme.palette.background.default,
-    transform: "scaleX(0)",
-    transition: "all 0.35s ease-in-out",
-    width: "100%",
     "&.active": {
-      display: "flex",
-      flexDirection: "column",
-      transform: "scaleY(1)",
+      display: "block",
+    },
+  },
+  "@keyframs openMenu": {
+    "0%": {
+      transform: "scale(0)",
+    },
+    "80%": {
+      transform: "scale(1.2)",
+    },
+    "100%": {
+      transform: "scale(1)",
     },
   },
 }));
