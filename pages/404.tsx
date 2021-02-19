@@ -24,7 +24,7 @@ const NotFound = () => {
       <SvgIcon className={classes.iconLarge}>
         <SentimentVeryDissatisfiedIcon />
       </SvgIcon>
-      <h1>Oops the page you try to reach in broken or not exist</h1>
+      <h1>Oops the page you try to reach is broken or not exist</h1>
       <h2>error 404</h2>
       <SorryButton
         className={classes.btn}
