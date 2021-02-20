@@ -44,16 +44,16 @@ const useStyles = makeStyles({
     height: 200,
   },
 
-  404: {
-    height: "85vh",
-    fontWeight: "bold",
-    textTransform: "capitalize",
-    display: "flex",
-    flexDirection: "column",
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
+  // 404: {
+  //   height: "85vh",
+  //   fontWeight: "bold",
+  //   textTransform: "capitalize",
+  //   display: "flex",
+  //   flexDirection: "column",
+  //   flex: 1,
+  //   justifyContent: "center",
+  //   alignItems: "center",
+  // },
 
   denied: {
     height: "85vh",
@@ -66,6 +66,19 @@ const useStyles = makeStyles({
     alignItems: "center",
   },
 });
+
+const useNotFound = makeStyles((theme) => ({
+  root: {
+    height: "85vh",
+    fontWeight: "bold",
+    textTransform: "capitalize",
+    display: "flex",
+    flexDirection: "column",
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+}));
 
 const useAboutStyles = makeStyles({
   h1: {
@@ -262,6 +275,7 @@ export {
   theme,
   darkTheme,
   useStyles,
+  useNotFound,
   useNavbarStyles,
   useAboutStyles,
   useDropdownStyles,

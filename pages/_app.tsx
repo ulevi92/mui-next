@@ -4,7 +4,6 @@ import Head from "next/head";
 import ContextStore from "../hooks/StoreContext";
 import Layout from "../components/Layout";
 import { CssBaseline } from "@material-ui/core";
-import { StylesProvider } from "@material-ui/core/styles";
 
 function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -24,14 +23,13 @@ function App({ Component, pageProps }: AppProps) {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      <StylesProvider injectFirst>
-        <ContextStore>
-          <Layout>
-            <CssBaseline />
-            <Component {...pageProps} />
-          </Layout>
-        </ContextStore>
-      </StylesProvider>
+
+      <ContextStore>
+        <Layout>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </Layout>
+      </ContextStore>
     </>
   );
 }

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import router from "next/router";
 //import style
-import { SorryButton, useStyles } from "../theme/theme";
+import { SorryButton, useNotFound } from "../theme/theme";
 
 //import material components
 import { SvgIcon } from "@material-ui/core";
@@ -9,7 +9,7 @@ import { SvgIcon } from "@material-ui/core";
 import SentimentVeryDissatisfiedIcon from "@material-ui/icons/SentimentVeryDissatisfied";
 
 const NotFound = () => {
-  const classes = useStyles();
+  const classes = useNotFound();
 
   useEffect(() => {
     setTimeout(() => {
@@ -21,13 +21,13 @@ const NotFound = () => {
 
   return (
     <div className={classes[404]}>
-      <SvgIcon className={classes.iconLarge}>
+      <SvgIcon className={classes.root}>
         <SentimentVeryDissatisfiedIcon />
       </SvgIcon>
       <h1>Oops the page you try to reach is broken or not exist</h1>
       <h2>error 404</h2>
       <SorryButton
-        className={classes.btn}
+        // className={classes.btn}
         variant="outlined"
         onClick={onButtonClick}
       >
