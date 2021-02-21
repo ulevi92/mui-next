@@ -1,32 +1,18 @@
 import type { AppProps /*, AppContext */ } from "next/app";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Head from "next/head";
 import ContextStore from "../hooks/StoreContext";
 import Layout from "../components/Layout";
-import { CssBaseline, ThemeProvider } from "@material-ui/core";
-import { darkTheme, theme } from "../theme/theme";
-
-import { create } from "jss";
-import { StylesProvider, jssPreset } from "@material-ui/core/styles";
+import { CssBaseline } from "@material-ui/core";
 
 function App({ Component, pageProps }: AppProps) {
-  const [darkMode, setDarkMode] = useState<boolean>(false);
-
-  const jss = create({
-    ...jssPreset(),
-    // Define a custom insertion point that JSS will look for when injecting the styles into the DOM.
-    insertionPoint: "jss-insertion-point",
-  });
-
   useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector("#jss-server-side");
-    if (jssStyles && "parentElement" in jssStyles) {
-      (jssStyles.parentElement as HTMLElement).removeChild(jssStyles);
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles);
     }
   }, []);
-
-  console.log(darkMode);
 
   return (
     <>
@@ -39,14 +25,10 @@ function App({ Component, pageProps }: AppProps) {
       </Head>
 
       <ContextStore>
-        <StylesProvider jss={jss}>
-          <ThemeProvider theme={darkMode ? darkTheme : theme}>
-            <Layout>
-              <CssBaseline />
-              <Component {...pageProps} />
-            </Layout>
-          </ThemeProvider>
-        </StylesProvider>
+        <Layout>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </Layout>
       </ContextStore>
     </>
   );

@@ -1,20 +1,47 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import router from "next/router";
 //import style
-import { SorryButton, useNotFound } from "../theme/theme";
+import { SorryButton } from "../theme/theme";
 
 //import material components
-import { SvgIcon } from "@material-ui/core";
+import { makeStyles, SvgIcon, Typography } from "@material-ui/core";
 
 import SentimentVeryDissatisfiedIcon from "@material-ui/icons/SentimentVeryDissatisfied";
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    textTransform: "capitalize",
+    fontWeight: "bold",
+  },
+
+  icon: {
+    marginBlock: 50,
+    width: 200,
+    height: 200,
+  },
+
+  btn: {
+    borderRadius: 8,
+    marginBottom: 40,
+  },
+
+  header: {
+    marginBottom: 40,
+  },
+}));
+
 const NotFound = () => {
-  const classes = useNotFound();
+  const classes = useStyles();
 
   useEffect(() => {
     const timer = setTimeout(() => {
       router.push("/");
-    }, 2500);
+    }, 152500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -23,10 +50,17 @@ const NotFound = () => {
 
   return (
     <div className={classes.root}>
-      <SentimentVeryDissatisfiedIcon className={classes.icon} />
+      <SvgIcon className={classes.icon}>
+        <SentimentVeryDissatisfiedIcon />
+      </SvgIcon>
 
-      <h1>Oops the page you try to reach is broken or not exist</h1>
-      <h2>error 404</h2>
+      <Typography variant="h3" className={classes.header}>
+        Oops the page you try to reach is broken or not exist
+      </Typography>
+      <Typography color="error" variant="h4" className={classes.header}>
+        error 404
+      </Typography>
+
       <SorryButton
         className={classes.btn}
         variant="outlined"

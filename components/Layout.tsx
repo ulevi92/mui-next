@@ -11,11 +11,11 @@ const Layout: FC = ({ children }) => {
   const store = useStore();
 
   return (
-    <>
+    <ThemeProvider theme={store.darkMode ? darkTheme : theme}>
       <Navbar />
       {children}
       <Footer />
-    </>
+    </ThemeProvider>
   );
 };
 

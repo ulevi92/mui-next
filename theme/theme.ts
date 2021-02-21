@@ -67,27 +67,6 @@ const useStyles = makeStyles({
   },
 });
 
-const useNotFound = makeStyles({
-  root: {
-    display: "flex",
-    flex: 1,
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    textTransform: "capitalize",
-    fontWeight: "bold",
-  },
-
-  icon: {
-    width: 200,
-    height: 200,
-  },
-
-  btn: {
-    borderRadius: 0,
-  },
-});
-
 const useAboutStyles = makeStyles({
   h1: {
     textAlign: "center",
@@ -283,7 +262,6 @@ export {
   theme,
   darkTheme,
   useStyles,
-  useNotFound,
   useNavbarStyles,
   useAboutStyles,
   useDropdownStyles,
