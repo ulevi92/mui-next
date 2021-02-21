@@ -3,6 +3,9 @@ import router from "next/router";
 
 import { Button, makeStyles } from "@material-ui/core";
 
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+
 const useStyles = makeStyles((theme) => ({
   ul: {
     display: "none",
@@ -18,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: "column",
       justifyContent: "space-around",
       position: "absolute",
-      width: "100%",
     },
   },
 
@@ -105,6 +107,7 @@ const Dropdown: FC = () => {
           ref={accBtnRef}
           className={classes.btn}
           onClick={() => router.push("/account")}
+          endIcon={<AccountCircleIcon />}
         >
           account
         </Button>
@@ -112,6 +115,7 @@ const Dropdown: FC = () => {
           ref={logoutBtnRef}
           className={classes.btn}
           // onClick={} will logout
+          endIcon={<ExitToAppIcon />}
         >
           logout
         </Button>

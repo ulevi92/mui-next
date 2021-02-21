@@ -50,4 +50,34 @@ const SorryButton = withStyles((theme) => ({
   },
 }))(Button);
 
-export { theme, darkTheme, SorryButton };
+const PremiumButton = withStyles((theme) => ({
+  root: {
+    color: "white",
+    background: `linear-gradient(to right, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+    borderLeft: "none",
+    borderRight: "none",
+    transition: "all 0.35s ease-in-out",
+    fontWeight: 600,
+
+    "&:hover": {
+      opacity: 0.5,
+    },
+  },
+}))(Button);
+
+const FreeButton = withStyles((theme) => ({
+  root: {
+    color: "black",
+    opacity: 0.65,
+    borderLeft: "none",
+    borderRight: "none",
+    transition: "all 0.35s ease-in-out",
+    fontWeight: 600,
+
+    "&:hover": {
+      opacity: 0.35,
+    },
+  },
+}))(Button);
+
+export { theme, darkTheme, SorryButton, PremiumButton, FreeButton };

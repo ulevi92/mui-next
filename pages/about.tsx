@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { Grid, makeStyles, SvgIcon, Typography } from "@material-ui/core";
 import CheckIcon from "@material-ui/icons/Check";
+import Head from "next/head";
 
 const useStyles = makeStyles({
   h1: {
@@ -49,6 +50,14 @@ const About = () => {
 
   return (
     <>
+      <Head>
+        <title>About</title>
+        <meta
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width"
+        />
+      </Head>
+
       <Typography className={classes.h1} variant="h4">
         Created By Uria Levi With:
       </Typography>
