@@ -1,14 +1,70 @@
-import { FC, useRef, useState, useEffect, createRef } from "react";
+import { FC, useRef, useState, useEffect } from "react";
 import router from "next/router";
 
-import { Button } from "@material-ui/core";
+import { Button, makeStyles } from "@material-ui/core";
 
-import { useDropdownStyles } from "../../theme/theme";
+const useStyles = makeStyles((theme) => ({
+  ul: {
+    display: "none",
+    height: 100,
+    transition: "all 0.5s ease-in-out",
+    padding: 0,
+    marginBottom: 0,
+
+    "&.active": {
+      background: "linear-gradient(to top, #2178bb, #2d9bef)",
+      animation: `$growDown 350ms ${theme.transitions.easing.easeInOut}`,
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-around",
+      position: "absolute",
+      width: "100%",
+    },
+  },
+
+  btn: {
+    display: "none",
+    borderRadius: 0,
+
+    "&.active": {
+      display: "block",
+      animation: `$itemMove 350ms ${theme.transitions.easing.easeInOut} 300ms`,
+    },
+  },
+
+  "@keyframes growDown": {
+    "0%": {
+      transform: "translateY(-50px)",
+    },
+
+    "80%": {
+      transform: "translateY(15px)",
+    },
+
+    "100%": {
+      transform: "translateY(0)",
+    },
+  },
+
+  "@keyframes itemMove": {
+    "0%": {
+      transform: "translateX(5px)",
+    },
+
+    "80%": {
+      transform: "translateX(-5px)",
+    },
+
+    "100%": {
+      transform: "translateX(0)",
+    },
+  },
+}));
 
 const Dropdown: FC = () => {
   const [active, setActive] = useState(false);
 
-  const classes = useDropdownStyles();
+  const classes = useStyles();
 
   const menuRef = useRef<HTMLUListElement>(null);
   const accBtnRef = useRef<HTMLButtonElement>(null);

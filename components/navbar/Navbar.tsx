@@ -1,8 +1,6 @@
 import router from "next/router";
 import Image from "next/image";
 
-import { useNavbarStyles } from "../../theme/theme";
-
 //import material-ui
 import {
   AppBar,
@@ -10,7 +8,6 @@ import {
   IconButton,
   Toolbar,
   makeStyles,
-  Button,
 } from "@material-ui/core";
 //import material-ui icons
 
@@ -23,12 +20,27 @@ import { useStore } from "../../hooks/StoreContext";
 //import components
 import RenderMenu from "./Navbar.helper";
 
+const useStyles = makeStyles((theme) => ({
+  offset: theme.mixins.toolbar,
+  container: {
+    alignItems: "center",
+  },
+
+  iconBox: {
+    textAlign: "end",
+  },
+
+  icon: {
+    transition: "all 0.35s ease-in-out",
+  },
+}));
+
 const Navbar = () => {
   //contexts
   const store = useStore();
 
   //styles
-  const classes = useNavbarStyles();
+  const classes = useStyles();
 
   //handle onClick
   const onLogoClick = () => router.push("/");

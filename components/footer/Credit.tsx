@@ -1,16 +1,32 @@
-import { Typography } from "@material-ui/core";
-import { useFooterStyles } from "../../theme/theme";
+import { makeStyles, Typography } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  creditItem: {
+    marginTop: 45,
+    cursor: "pointer",
+    marginRight: 20,
+    transition: "all 0.35s ease-in-out",
+
+    "&:last-of-type": {
+      marginRight: 0,
+    },
+
+    "&:hover": {
+      color: theme.palette.primary.main,
+    },
+  },
+}));
 
 const Credit = () => {
-  const creditList = ["legal", "privacy", "cookies", "ads"];
+  const classes = useStyles();
 
-  const classes = useFooterStyles();
-
-  const renderCreditList = creditList.map((item, i) => (
-    <Typography key={i} className={classes.creditItem}>
-      {item}
-    </Typography>
-  ));
+  const renderCreditList = ["legal", "privacy", "cookies", "ads"].map(
+    (item, i) => (
+      <Typography key={i} className={classes.creditItem}>
+        {item}
+      </Typography>
+    )
+  );
 
   return <>{renderCreditList}</>;
 };

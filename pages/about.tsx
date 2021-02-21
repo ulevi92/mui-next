@@ -1,11 +1,36 @@
 import Link from "next/link";
 
-import { useAboutStyles } from "../theme/theme";
-import { Grid, SvgIcon, Typography } from "@material-ui/core";
+import { Grid, makeStyles, SvgIcon, Typography } from "@material-ui/core";
 import CheckIcon from "@material-ui/icons/Check";
 
+const useStyles = makeStyles({
+  h1: {
+    textAlign: "center",
+    marginTop: 45,
+    marginBottom: 45,
+  },
+
+  itemContainer: {
+    display: "flex",
+    marginBlock: 5,
+
+    "&:first-of-type": {
+      marginTop: 0,
+    },
+    "&:last-of-type": {
+      marginBottom: 0,
+    },
+  },
+
+  item: {
+    marginLeft: 20,
+    fontWeight: 600,
+    transition: "all 0.35s ease-in-out",
+  },
+});
+
 const About = () => {
-  const classes = useAboutStyles();
+  const classes = useStyles();
 
   const renderCreatedList = [
     "React.js",
@@ -13,12 +38,13 @@ const About = () => {
     "Typescript",
     "Material-Ui",
     "Firebase",
-  ].map((item, i) => <Typography key={i}>{item}</Typography>);
-
-  const renderIconList = [0, 0, 0, 0, 0].map((item, i) => (
-    <SvgIcon key={i} color="primary">
-      <CheckIcon />
-    </SvgIcon>
+  ].map((item, i) => (
+    <div key={i} className={classes.itemContainer}>
+      <SvgIcon color="primary">
+        <CheckIcon />
+      </SvgIcon>
+      <Typography className={classes.item}>{item}</Typography>
+    </div>
   ));
 
   return (
@@ -28,16 +54,8 @@ const About = () => {
       </Typography>
 
       <Grid item container>
-        <Grid
-          item
-          xs={1}
-          container
-          direction="column"
-          justify="center"
-          alignItems="center"
-        >
-          {renderIconList}
-        </Grid>
+        <Grid item xs={1} />
+
         <Grid
           item
           xs={11}

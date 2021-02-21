@@ -1,21 +1,37 @@
 import Image from "next/image";
 
-import { Grid, SvgIcon, Typography } from "@material-ui/core";
+import { Grid, makeStyles, SvgIcon, Typography } from "@material-ui/core";
 import CardList from "./CardList";
 
-import {
-  communitiesItems,
-  musicSurficItems,
-  usefulLinksItems,
-} from "./Footer.helper";
-import { useFooterStyles } from "../../theme/theme";
 import SocialIcons from "./SocialIcons";
 import Credit from "./Credit";
 
 import CopyrightIcon from "@material-ui/icons/Copyright";
 
+const useStyles = makeStyles((theme) => ({
+  footerContainer: {
+    marginTop: 20,
+  },
+
+  iconContainer: {
+    textAlign: "center",
+  },
+
+  creditContainer: {
+    display: "flex",
+  },
+
+  copyrightContainer: {
+    textAlign: "center",
+  },
+
+  copyrightName: {
+    marginLeft: 15,
+  },
+}));
+
 const Footer = () => {
-  const classes = useFooterStyles();
+  const classes = useStyles();
 
   return (
     <Grid container className={classes.footerContainer}>
@@ -33,26 +49,7 @@ const Footer = () => {
             alignItems="center"
             md={8}
           >
-            <Grid item md={4} xs={12}>
-              <Typography variant="h6" className={classes.cardTitle}>
-                MusicSurfic
-              </Typography>
-              <CardList title="MusicSurfic" list={communitiesItems} />
-            </Grid>
-
-            <Grid item md={4} xs={12}>
-              <Typography variant="h6" className={classes.cardTitle}>
-                Community
-              </Typography>
-              <CardList title="Community" list={musicSurficItems} />
-            </Grid>
-
-            <Grid item md={4} xs={12}>
-              <Typography variant="h6" className={classes.cardTitle}>
-                Useful Links
-              </Typography>
-              <CardList title="Usefuf Links" list={usefulLinksItems} />
-            </Grid>
+            <CardList />
           </Grid>
           <Grid item md={1} />
         </Grid>

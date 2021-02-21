@@ -1,26 +1,48 @@
 import { FC } from "react";
 import router from "next/router";
 
-import { Button, Grid } from "@material-ui/core";
-
-//import style
-import { useNotLoggedStyle, useLoggedStyle } from "../../theme/theme";
+import { Button, Grid, makeStyles } from "@material-ui/core";
 
 //import store
 import { useStore } from "../../hooks/StoreContext";
 import Search from "./Search";
 import Dropdown from "./Dropdown";
 
+const useStyles = makeStyles({
+  loggedBtn: {
+    marginRight: 4,
+
+    "&:last-of-type": {
+      marginRight: 0,
+    },
+  },
+
+  centerButtons: {
+    marginRight: 4,
+
+    "&:last-of-type": {
+      marginRight: 0,
+    },
+  },
+
+  authButtons: {
+    marginRight: 24,
+
+    "&:last-of-type": {
+      marginRight: 0,
+    },
+  },
+});
+
 const RenderMenu: FC = () => {
   const store = useStore();
-
+  const classes = useStyles();
   //render not logged in menu
-  const notLoggedStyles = useNotLoggedStyle();
 
   const centerButtons = ["download", "help"].map((item, i) => (
     <Button
       key={i}
-      className={notLoggedStyles.centerButtons}
+      className={classes.centerButtons}
       onClick={() => router.push("/")}
     >
       {item}
@@ -29,7 +51,7 @@ const RenderMenu: FC = () => {
   const notLoggedButtons = ["login", "sign in"].map((item, i) => (
     <Button
       key={i}
-      className={notLoggedStyles.authButtons}
+      className={classes.authButtons}
       onClick={() => router.push(`/${item}`)}
     >
       {item}
@@ -38,14 +60,12 @@ const RenderMenu: FC = () => {
 
   //render logged in menu
 
-  const loggedStyles = useLoggedStyle();
-
   const LoggedButtons = ["home", "browse", "library", "about"].map(
     (item, i) => (
       <Button
         key={i}
         onClick={() => router.push(`/${item}`)}
-        className={loggedStyles.btn}
+        className={classes.loggedBtn}
       >
         {item}
       </Button>
