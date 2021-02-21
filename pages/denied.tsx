@@ -40,7 +40,7 @@ const AccessDenied = () => {
   useEffect(() => {
     setTimeout(() => {
       router.push("/");
-    }, 153500);
+    }, 3500);
   }, []);
 
   const onButtonClick = () => router.push("/");

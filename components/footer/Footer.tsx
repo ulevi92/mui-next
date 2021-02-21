@@ -1,4 +1,5 @@
 import Image from "next/image";
+import router from "next/router";
 
 import { Grid, makeStyles, SvgIcon, Typography } from "@material-ui/core";
 import CardList from "./CardList";
@@ -9,6 +10,10 @@ import Credit from "./Credit";
 import CopyrightIcon from "@material-ui/icons/Copyright";
 
 const useStyles = makeStyles((theme) => ({
+  image: {
+    cursor: "pointer",
+  },
+
   footerContainer: {
     marginTop: 20,
   },
@@ -22,7 +27,9 @@ const useStyles = makeStyles((theme) => ({
   },
 
   copyrightContainer: {
-    textAlign: "center",
+    display: "flex",
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
   },
 
   copyrightName: {
@@ -38,16 +45,24 @@ const Footer = () => {
       <Grid container>
         <Grid item container md={8}>
           <Grid item md={1} />
-          <Grid item md={2}>
-            <Image src="/logo.png" height={100} width={100} alt="logo" />
+          <Grid item container justify="center" alignItems="center" md={2}>
+            <Image
+              src="/logo.png"
+              height={100}
+              width={100}
+              alt="logo"
+              onClick={() => router.push("/")}
+              className={classes.image}
+            />
           </Grid>
+          <Grid item md={1} />
           <Grid
             item
             container
             direction="row"
             justify="center"
             alignItems="center"
-            md={8}
+            md={7}
           >
             <CardList />
           </Grid>
@@ -61,11 +76,12 @@ const Footer = () => {
       <Grid container>
         <Grid item container md={8}>
           <Grid item md={1} />
+
           <Grid item md={11} className={classes.creditContainer}>
             <Credit />
           </Grid>
         </Grid>
-        <Grid item container md={4} justify="center">
+        <Grid item container md={4} justify="center" alignItems="flex-end">
           <SvgIcon>
             <CopyrightIcon />
           </SvgIcon>

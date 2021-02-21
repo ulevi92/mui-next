@@ -41,7 +41,7 @@ const NotFound = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       router.push("/");
-    }, 152500);
+    }, 3500);
 
     return () => clearTimeout(timer);
   }, []);
