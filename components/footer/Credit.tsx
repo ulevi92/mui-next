@@ -6,6 +6,7 @@ const useStyles = makeStyles((theme) => ({
     cursor: "pointer",
     marginRight: 20,
     transition: "all 0.35s ease-in-out",
+    fontWeight: 600,
 
     "&:last-of-type": {
       marginRight: 0,
@@ -17,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Credit = () => {
+const CreditItems = () => {
   const classes = useStyles();
 
   const renderCreditList = ["legal", "privacy", "cookies", "ads"].map(
@@ -31,4 +32,4 @@ const Credit = () => {
   return <>{renderCreditList}</>;
 };
 
-export default Credit;
+export default CreditItems;

@@ -5,7 +5,7 @@ import { Grid, makeStyles, SvgIcon, Typography } from "@material-ui/core";
 import CardList from "./CardList";
 
 import SocialIcons from "./SocialIcons";
-import Credit from "./Credit";
+import CreditItems from "./Credit";
 
 import CopyrightIcon from "@material-ui/icons/Copyright";
 
@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
   copyrightName: {
     marginLeft: 15,
+    fontWeight: 600,
   },
 }));
 
@@ -78,7 +79,7 @@ const Footer = () => {
           <Grid item md={1} />
 
           <Grid item md={11} className={classes.creditContainer}>
-            <Credit />
+            <CreditItems />
           </Grid>
         </Grid>
         <Grid item container md={4} justify="center" alignItems="flex-end">
