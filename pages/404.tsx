@@ -9,15 +9,14 @@ import { SvgIcon } from "@material-ui/core";
 import SentimentVeryDissatisfiedIcon from "@material-ui/icons/SentimentVeryDissatisfied";
 
 const NotFound = () => {
-  const [key, setKey] = useState(0);
-
   const classes = useNotFound();
 
   useEffect(() => {
-    setKey(1);
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       router.push("/");
-    }, 102500);
+    }, 2500);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const onButtonClick = () => router.push("/");
