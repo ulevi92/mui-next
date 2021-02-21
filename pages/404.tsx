@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import router from "next/router";
 //import style
 import { SorryButton, useNotFound } from "../theme/theme";
@@ -9,9 +9,12 @@ import { SvgIcon } from "@material-ui/core";
 import SentimentVeryDissatisfiedIcon from "@material-ui/icons/SentimentVeryDissatisfied";
 
 const NotFound = () => {
+  const [key, setKey] = useState(0);
+
   const classes = useNotFound();
 
   useEffect(() => {
+    setKey(1);
     setTimeout(() => {
       router.push("/");
     }, 102500);
