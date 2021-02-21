@@ -6,8 +6,17 @@ import Layout from "../components/Layout";
 import { CssBaseline, ThemeProvider } from "@material-ui/core";
 import { darkTheme, theme } from "../theme/theme";
 
+import { create } from "jss";
+import { StylesProvider, jssPreset } from "@material-ui/core/styles";
+
 function App({ Component, pageProps }: AppProps) {
   const [darkMode, setDarkMode] = useState<boolean>(false);
+
+  const jss = create({
+    ...jssPreset(),
+    // Define a custom insertion point that JSS will look for when injecting the styles into the DOM.
+    insertionPoint: "jss-insertion-point",
+  });
 
   useEffect(() => {
     // Remove the server-side injected CSS.
@@ -30,12 +39,14 @@ function App({ Component, pageProps }: AppProps) {
       </Head>
 
       <ContextStore>
-        <ThemeProvider theme={darkMode ? darkTheme : theme}>
-          <Layout>
-            <CssBaseline />
-            <Component {...pageProps} />
-          </Layout>
-        </ThemeProvider>
+        <StylesProvider jss={jss}>
+          <ThemeProvider theme={darkMode ? darkTheme : theme}>
+            <Layout>
+              <CssBaseline />
+              <Component {...pageProps} />
+            </Layout>
+          </ThemeProvider>
+        </StylesProvider>
       </ContextStore>
     </>
   );
