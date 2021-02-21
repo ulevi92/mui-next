@@ -20,14 +20,14 @@ const NotFound = () => {
   const onButtonClick = () => router.push("/");
 
   return (
-    <div className={classes[404]}>
-      <SvgIcon className={classes.root}>
+    <div className={classes.root}>
+      <SvgIcon className={classes.icon}>
         <SentimentVeryDissatisfiedIcon />
       </SvgIcon>
       <h1>Oops the page you try to reach is broken or not exist</h1>
       <h2>error 404</h2>
       <SorryButton
-        // className={classes.btn}
+        className={classes.btn}
         variant="outlined"
         onClick={onButtonClick}
       >

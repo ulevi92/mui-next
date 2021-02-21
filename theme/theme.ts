@@ -44,16 +44,16 @@ const useStyles = makeStyles({
     height: 200,
   },
 
-  // 404: {
-  //   height: "85vh",
-  //   fontWeight: "bold",
-  //   textTransform: "capitalize",
-  //   display: "flex",
-  //   flexDirection: "column",
-  //   flex: 1,
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  // },
+  404: {
+    height: "85vh",
+    fontWeight: "bold",
+    textTransform: "capitalize",
+    display: "flex",
+    flexDirection: "column",
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
 
   denied: {
     height: "85vh",
@@ -67,18 +67,26 @@ const useStyles = makeStyles({
   },
 });
 
-const useNotFound = makeStyles((theme) => ({
+const useNotFound = makeStyles({
   root: {
-    height: "85vh",
-    fontWeight: "bold",
-    textTransform: "capitalize",
     display: "flex",
-    flexDirection: "column",
     flex: 1,
+    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    textTransform: "capitalize",
+    fontWeight: "bold",
   },
-}));
+
+  icon: {
+    width: 200,
+    height: 200,
+  },
+
+  btn: {
+    borderRadius: 0,
+  },
+});
 
 const useAboutStyles = makeStyles({
   h1: {
