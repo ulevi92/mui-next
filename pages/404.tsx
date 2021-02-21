@@ -21,9 +21,8 @@ const NotFound = () => {
 
   return (
     <div className={classes.root}>
-      <SvgIcon className={classes.icon}>
-        <SentimentVeryDissatisfiedIcon />
-      </SvgIcon>
+      <SentimentVeryDissatisfiedIcon className={classes.icon} />
+
       <h1>Oops the page you try to reach is broken or not exist</h1>
       <h2>error 404</h2>
       <SorryButton
