@@ -44,21 +44,19 @@ const CardList: FC = () => {
     },
   };
 
-  const renderCards = (title: string, items: string[]) => {
-    return (
-      <Grid item md={4} xs={12}>
-        <Typography variant="h6" className={classes.cardTitle}>
-          {title}
-        </Typography>
+  const renderCards = (title: string, items: string[]) => (
+    <Grid item md={4} xs={12}>
+      <Typography variant="h6" className={classes.cardTitle}>
+        {title}
+      </Typography>
 
-        {items.map((item, i) => (
-          <Typography key={i} variant="subtitle1" className={classes.cardItem}>
-            {item}
-          </Typography>
-        ))}
-      </Grid>
-    );
-  };
+      {items.map((item, i) => (
+        <Typography key={i} variant="subtitle1" className={classes.cardItem}>
+          {item}
+        </Typography>
+      ))}
+    </Grid>
+  );
 
   return (
     <>

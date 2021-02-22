@@ -2,8 +2,6 @@ import { FC } from "react";
 import Image from "next/image";
 import { Grid, makeStyles, SvgIcon, Typography } from "@material-ui/core";
 
-import SettingsInputAntennaIcon from "@material-ui/icons/SettingsInputAntenna";
-
 interface FlowDirectionProps {
   left?: boolean;
   right?: boolean;
@@ -17,8 +15,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     position: "relative",
     height: "100%",
-    background: "#161a1a",
     color: "white",
+    marginBottom: 40,
   },
 
   flowImage: {
@@ -53,6 +51,7 @@ const FlowDirection: FC<FlowDirectionProps> = ({
 
   const renderToSide = left ? (
     <Grid container className={classes.root}>
+      <Grid item sm={1} />
       <Grid item md={4}>
         <Image src={imageSrc} layout="responsive" height={400} width={400} />
       </Grid>
@@ -60,7 +59,7 @@ const FlowDirection: FC<FlowDirectionProps> = ({
       <Grid
         item
         container
-        sm={8}
+        sm={7}
         xs={12}
         justify="center"
         alignItems="center"
@@ -85,9 +84,9 @@ const FlowDirection: FC<FlowDirectionProps> = ({
     </Grid>
   ) : right ? (
     <Grid container className={classes.root}>
-      <Grid item container sm={8} xs={12}>
-        <Grid item sm={3} />
-        <Grid item container sm={8} alignItems="center">
+      <Grid item container sm={7} xs={12}>
+        <Grid item sm={2} />
+        <Grid item container sm={9} alignItems="center">
           <Grid item container>
             <Typography className={classes.flowTitleTwo} variant="h2">
               {title}
@@ -103,6 +102,7 @@ const FlowDirection: FC<FlowDirectionProps> = ({
       <Grid item md={4}>
         <Image src={imageSrc} layout="responsive" height={400} width={400} />
       </Grid>
+      <Grid item sm={1} />
     </Grid>
   ) : null;
 

@@ -10,11 +10,16 @@ import {
 import { useStore } from "../../hooks/StoreContext";
 import { FreeButton, PremiumButton } from "../../theme/theme";
 
-import FlowDirection from "./LandingPage.helper";
+import FlowDirection from "./FlowDirection";
+import FlowImage from "./FlowImage";
+import FlowPlans from "./FlowPlans";
 
 const useStyles = makeStyles((theme) => ({
-  pageHeader: {
+  root: {
     background: "#161a1a",
+  },
+
+  pageHeader: {
     pointerEvents: "none",
     height: "100vh",
     zIndex: 1,
@@ -85,7 +90,7 @@ const LandingPage = () => {
   )} feature to find the song that is playing near you.`;
 
   return (
-    <>
+    <div className={classes.root}>
       <Grid
         container
         className={classes.pageHeader}
@@ -99,7 +104,7 @@ const LandingPage = () => {
         />
         <div className={classes.pageHeadContainer}>
           <Typography variant="h3" className={classes.pageHeadHeader}>
-            Open the world of music. <br /> It's all here
+            Open the world of music. <br /> It's all hereWW
           </Typography>
 
           <ButtonGroup className={classes.pageHeadButtonContainer}>
@@ -111,36 +116,36 @@ const LandingPage = () => {
 
           <Typography variant="subtitle1" className={classes.pageHeadSubtitle}>
             1-month free trial
-            <Typography className={classes.pageHeadSubtitleSpan}>
+            <Typography
+              variant="subtitle1"
+              className={classes.pageHeadSubtitleSpan}
+            >
               $7.99
             </Typography>
             /month after
           </Typography>
         </div>
       </Grid>
-      <Grid container>
-        <FlowDirection
-          left
-          imageSrc="/flow-phone.png"
-          icon="/flow-icon.png"
-          title={flowTitleOne}
-          text={flowTextOne}
-        />
-      </Grid>
 
-      <Grid container></Grid>
+      <FlowDirection
+        left
+        imageSrc="/flow-phone.png"
+        icon="/flow-icon.png"
+        title={flowTitleOne}
+        text={flowTextOne}
+      />
 
-      <Grid container>
-        <FlowDirection
-          right
-          imageSrc="/flow-phone-2.png"
-          title={flowTitleTwo}
-          text={flowTextTwo}
-        />
+      <FlowImage />
 
-        <Grid container></Grid>
-      </Grid>
-    </>
+      <FlowDirection
+        right
+        imageSrc="/flow-phone-2.png"
+        title={flowTitleTwo}
+        text={flowTextTwo}
+      />
+
+      <FlowPlans />
+    </div>
   );
 };
 
