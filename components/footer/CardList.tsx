@@ -41,45 +41,19 @@ const CardList: FC = () => {
     },
   ];
 
-  const renderItems = items.map((item, i) => {
-    return i === 0 ? (
-      <Grid key={i} item md={4} xs={12}>
-        <Typography variant="h6" className={classes.cardTitle}>
-          {item.title}
-        </Typography>
+  const renderItems = items.map((item, i) => (
+    <Grid key={i} item md={4} xs={12}>
+      <Typography variant="h6" className={classes.cardTitle}>
+        {item.title}
+      </Typography>
 
-        {item.items.map((item, i) => (
-          <Typography key={i} variant="subtitle1" className={classes.cardItem}>
-            {item}
-          </Typography>
-        ))}
-      </Grid>
-    ) : i === 1 ? (
-      <Grid key={i} item md={4} xs={12}>
-        <Typography variant="h6" className={classes.cardTitle}>
-          {item.title}
+      {item.items.map((item, i) => (
+        <Typography key={i} variant="subtitle1" className={classes.cardItem}>
+          {item}
         </Typography>
-
-        {item.items.map((item, i) => (
-          <Typography key={i} variant="subtitle1" className={classes.cardItem}>
-            {item}
-          </Typography>
-        ))}
-      </Grid>
-    ) : i === 2 ? (
-      <Grid key={i} item md={4} xs={12}>
-        <Typography variant="h6" className={classes.cardTitle}>
-          {item.title}
-        </Typography>
-
-        {item.items.map((item, i) => (
-          <Typography key={i} variant="subtitle1" className={classes.cardItem}>
-            {item}
-          </Typography>
-        ))}
-      </Grid>
-    ) : null;
-  });
+      ))}
+    </Grid>
+  ));
 
   return <>{renderItems}</>;
 };
