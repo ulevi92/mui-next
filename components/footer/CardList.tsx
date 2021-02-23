@@ -24,62 +24,64 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+type ItemsType = {
+  title: string;
+  items: string[];
+}[];
+
 const CardList: FC = () => {
   const classes = useStyles();
 
-  const footerItems = {
-    MusicSurfic: {
-      title: "MusicSurfic",
-      items: ["about", "premium", "features"],
-    },
-
-    Communities: {
-      title: "Communities",
-      items: ["for artists", "for developers", "press"],
-    },
-
-    UsefullLinks: {
+  const items: ItemsType = [
+    { title: "MusicSurfic", items: ["about", "premium", "features"] },
+    { title: "Communities", items: ["for artists", "for developers", "press"] },
+    {
       title: "Usefull Links",
       items: ["help", "web player", "explorer channels"],
     },
-  };
+  ];
 
-  const renderCards = (title: string, items: string[]) => (
-    <Grid item md={4} xs={12}>
-      <Typography variant="h6" className={classes.cardTitle}>
-        {title}
-      </Typography>
-
-      {items.map((item, i) => (
-        <Typography key={i} variant="subtitle1" className={classes.cardItem}>
-          {item}
+  const renderItems = items.map((item, i) => {
+    return i === 0 ? (
+      <Grid key={i} item md={4} xs={12}>
+        <Typography variant="h6" className={classes.cardTitle}>
+          {item.title}
         </Typography>
-      ))}
-    </Grid>
-  );
 
-  return (
-    <>
-      <>
-        {renderCards(
-          footerItems.MusicSurfic.title,
-          footerItems.MusicSurfic.items
-        )}
-      </>
-      <>
-        {renderCards(
-          footerItems.Communities.title,
-          footerItems.Communities.items
-        )}
-      </>
-      <>
-        {renderCards(
-          footerItems.UsefullLinks.title,
-          footerItems.UsefullLinks.items
-        )}
-      </>
-    </>
-  );
+        {item.items.map((item, i) => (
+          <Typography key={i} variant="subtitle1" className={classes.cardItem}>
+            {item}
+          </Typography>
+        ))}
+      </Grid>
+    ) : i === 1 ? (
+      <Grid key={i} item md={4} xs={12}>
+        <Typography variant="h6" className={classes.cardTitle}>
+          {item.title}
+        </Typography>
+
+        {item.items.map((item, i) => (
+          <Typography key={i} variant="subtitle1" className={classes.cardItem}>
+            {item}
+          </Typography>
+        ))}
+      </Grid>
+    ) : i === 2 ? (
+      <Grid key={i} item md={4} xs={12}>
+        <Typography variant="h6" className={classes.cardTitle}>
+          {item.title}
+        </Typography>
+
+        {item.items.map((item, i) => (
+          <Typography key={i} variant="subtitle1" className={classes.cardItem}>
+            {item}
+          </Typography>
+        ))}
+      </Grid>
+    ) : null;
+  });
+
+  return <>{renderItems}</>;
 };
 
 export default CardList;

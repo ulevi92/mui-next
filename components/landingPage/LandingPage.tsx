@@ -116,12 +116,7 @@ const LandingPage = () => {
 
           <Typography variant="subtitle1" className={classes.pageHeadSubtitle}>
             1-month free trial
-            <Typography
-              variant="subtitle1"
-              className={classes.pageHeadSubtitleSpan}
-            >
-              $7.99
-            </Typography>
+            <span className={classes.pageHeadSubtitleSpan}>$7.99</span>
             /month after
           </Typography>
         </div>
