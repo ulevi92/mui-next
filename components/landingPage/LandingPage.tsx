@@ -104,7 +104,7 @@ const LandingPage = () => {
         />
         <div className={classes.pageHeadContainer}>
           <Typography variant="h3" className={classes.pageHeadHeader}>
-            Open the world of music. <br /> It's all hereWW
+            Open the world of music. <br /> It's all here
           </Typography>
 
           <ButtonGroup className={classes.pageHeadButtonContainer}>
