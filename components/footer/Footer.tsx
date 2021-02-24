@@ -2,7 +2,7 @@ import Image from "next/image";
 import router from "next/router";
 
 import { Grid, makeStyles, SvgIcon, Typography } from "@material-ui/core";
-import CardList from "./CardList";
+import FooterMenu from "./FooterMenu";
 
 import SocialIcons from "./SocialIcons";
 import CreditItems from "./Credit";
@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   footerContainer: {
-    marginTop: 20,
+    marginTop: 40,
   },
 
   iconContainer: {
@@ -65,7 +65,7 @@ const Footer = () => {
             alignItems="center"
             md={7}
           >
-            <CardList />
+            <FooterMenu />
           </Grid>
           <Grid item md={1} />
         </Grid>

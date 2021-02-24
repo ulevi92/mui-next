@@ -2,6 +2,7 @@ import classes from "*.module.css";
 import { Grid, makeStyles, Typography } from "@material-ui/core";
 
 import Circles from "./Circles";
+import FlowPlanCards from "./FlowPlanCards";
 
 const useStyles = makeStyles({
   root: {
@@ -33,16 +34,17 @@ const FlowPlans = () => {
       <Grid
         item
         container
-        justify="center"
-        alignItems="center"
-        direction="column"
+        justify='center'
+        alignItems='center'
+        direction='column'
         sm={12}
       >
-        <Typography variant="h2" className={classes.header}>
+        <Typography variant='h2' className={classes.header}>
           Why go premium?
         </Typography>
 
         <Circles />
+        <FlowPlanCards />
       </Grid>
       <Grid item container sm={12}></Grid>
     </Grid>
