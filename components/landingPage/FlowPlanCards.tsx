@@ -81,6 +81,11 @@ const PremiumButton = withStyles((theme) => ({
     background: `linear-gradient(to right, ${theme.palette.primary.main} ,${theme.palette.secondary.main})`,
     marginTop: 35,
     alignSelf: "center",
+    transition: 'all 0.35s ease-in-out',
+
+    "&:hover": {
+      opacity: 0.75,
+    },
   },
 }))(Button);
 
