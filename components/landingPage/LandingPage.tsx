@@ -111,7 +111,7 @@ const LandingPage = () => {
             <PremiumButton variant="contained">
               MusicSufic Premium
             </PremiumButton>
-            <FreeButton variant="contained">MusicSurfic Free</FreeButton>
+            <FreeButton variant="contained">MusicSufic Free</FreeButton>
           </ButtonGroup>
 
           <Typography variant="subtitle1" className={classes.pageHeadSubtitle}>

@@ -33,7 +33,7 @@ const FooterMenu: FC = () => {
   const classes = useStyles();
 
   const navs: NavsType[] = [
-    { title: "MusicSurfic", links: ["about", "premium", "features"] },
+    { title: "MusicSufic", links: ["about", "premium", "features"] },
     { title: "Communities", links: ["for artists", "for developers", "press"] },
     {
       title: "Usefull Links",

@@ -4,7 +4,9 @@ import {
   CardContent,
   Grid,
   Typography,
+  Button,
   makeStyles,
+  withStyles,
 } from "@material-ui/core";
 
 import CheckIcon from "@material-ui/icons/Check";
@@ -33,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   typograpyContainer: {
-    height: "20vh",
+    height: "15vh",
   },
 
   subtitle: {
@@ -63,7 +65,24 @@ const useStyles = makeStyles((theme) => ({
     color: "rgba(255,255,255,0.7)",
     marginRight: 15,
   },
+
+  btn: {
+    width: "75%",
+    color: "black",
+    background: "rgba(255,255,255,0.65)",
+    marginTop: 35,
+    alignSelf: "center",
+  },
 }));
+
+const PremiumButton = withStyles((theme) => ({
+  root: {
+    width: "75%",
+    background: `linear-gradient(to right, ${theme.palette.primary.main} ,${theme.palette.secondary.main})`,
+    marginTop: 35,
+    alignSelf: "center",
+  },
+}))(Button);
 
 const FlowPlanCards: FC = () => {
   const classes = useStyles();
@@ -71,7 +90,7 @@ const FlowPlanCards: FC = () => {
   const renderCards = [
     {
       premium: false,
-      title: "MusicSurfic Free",
+      title: "MusicSuric Free",
       span: "$0.00",
       subtitle: "/month",
       valuableList: [
@@ -84,7 +103,7 @@ const FlowPlanCards: FC = () => {
 
     {
       premium: true,
-      title: "MusicSurfic Premium",
+      title: "MusicSuric Premium",
       span: "$7.99",
       subtitle: "/month",
       subtitle2: "start with 1-month free trial",
@@ -119,6 +138,7 @@ const FlowPlanCards: FC = () => {
                 {val}
               </Grid>
             ))}
+            <PremiumButton>Go Premium</PremiumButton>
           </Grid>
         </CardContent>
       </Card>
@@ -141,6 +161,9 @@ const FlowPlanCards: FC = () => {
                 {val}
               </Grid>
             ))}
+            <Button variant='contained' className={classes.btn}>
+              Go Free
+            </Button>
           </Grid>
         </CardContent>
       </Card>
