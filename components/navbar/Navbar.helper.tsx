@@ -48,7 +48,7 @@ const RenderMenu: FC = () => {
       {item}
     </Button>
   ));
-  const notLoggedButtons = ["login", "sign in"].map((item, i) => (
+  const notLoggedButtons = ["login", "signup"].map((item, i) => (
     <Button
       key={i}
       className={classes.authButtons}

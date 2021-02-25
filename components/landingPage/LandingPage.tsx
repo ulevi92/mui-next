@@ -1,4 +1,5 @@
 import Image from "next/image";
+import router from "next/router";
 
 import {
   Button,
@@ -20,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   pageHeader: {
+    position: "relative",
     pointerEvents: "none",
     height: "100vh",
     zIndex: 1,
@@ -94,27 +96,35 @@ const LandingPage = () => {
       <Grid
         container
         className={classes.pageHeader}
-        justify="center"
-        alignItems="center"
+        justify='center'
+        alignItems='center'
       >
         <Image
-          src="/body-bg.png"
-          layout="fill"
+          src='/body-bg.png'
+          layout='fill'
           className={classes.pageHeadImage}
         />
         <div className={classes.pageHeadContainer}>
-          <Typography variant="h3" className={classes.pageHeadHeader}>
+          <Typography variant='h3' className={classes.pageHeadHeader}>
             Open the world of music. <br /> It's all here
           </Typography>
 
           <ButtonGroup className={classes.pageHeadButtonContainer}>
-            <PremiumButton variant="contained">
+            <PremiumButton
+              variant='contained'
+              onClick={() => router.push("/signup")}
+            >
               MusicSufic Premium
             </PremiumButton>
-            <FreeButton variant="contained">MusicSufic Free</FreeButton>
+            <FreeButton
+              variant='contained'
+              onClick={() => router.push("/signup")}
+            >
+              MusicSufic Free
+            </FreeButton>
           </ButtonGroup>
 
-          <Typography variant="subtitle1" className={classes.pageHeadSubtitle}>
+          <Typography variant='subtitle1' className={classes.pageHeadSubtitle}>
             1-month free trial
             <span className={classes.pageHeadSubtitleSpan}>$7.99</span>
             /month after
@@ -124,8 +134,8 @@ const LandingPage = () => {
 
       <FlowDirection
         left
-        imageSrc="/flow-phone.png"
-        icon="/flow-icon.png"
+        imageSrc='/flow-phone.png'
+        icon='/flow-icon.png'
         title={flowTitleOne}
         text={flowTextOne}
       />
@@ -134,7 +144,7 @@ const LandingPage = () => {
 
       <FlowDirection
         right
-        imageSrc="/flow-phone-2.png"
+        imageSrc='/flow-phone-2.png'
         title={flowTitleTwo}
         text={flowTextTwo}
       />

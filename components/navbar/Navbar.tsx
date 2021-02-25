@@ -21,9 +21,12 @@ import { useStore } from "../../hooks/StoreContext";
 import RenderMenu from "./Navbar.helper";
 
 const useStyles = makeStyles((theme) => ({
-  offset: theme.mixins.toolbar,
   container: {
     alignItems: "center",
+  },
+
+  logo: {
+    cursor: "pointer",
   },
 
   iconBox: {
@@ -55,16 +58,21 @@ const Navbar = () => {
   const renderNavContent = store.logged ? "" : "";
 
   return (
-    <Grid item container xs={12}>
-      <AppBar position="sticky">
+    <>
+      <AppBar position='relative'>
         <Toolbar>
           <Grid item md={1}>
-            <IconButton onClick={onLogoClick}>
-              <Image src="/logo.png" width="75" height="75" alt="logo" />
-            </IconButton>
+            <Image
+              src='/logo.png'
+              width='75'
+              height='75'
+              alt='logo'
+              className={classes.logo}
+              onClick={onLogoClick}
+            />
           </Grid>
 
-          <Grid item container md={10} alignItems="center">
+          <Grid item container md={10} alignItems='center'>
             <RenderMenu />
           </Grid>
 
@@ -75,8 +83,7 @@ const Navbar = () => {
           </Grid>
         </Toolbar>
       </AppBar>
-      <div className={classes.offset} />
-    </Grid>
+    </>
   );
 };
 

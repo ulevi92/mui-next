@@ -1,4 +1,5 @@
 import { FC } from "react";
+import router from "next/router";
 import {
   Card,
   CardContent,
@@ -81,7 +82,7 @@ const PremiumButton = withStyles((theme) => ({
     background: `linear-gradient(to right, ${theme.palette.primary.main} ,${theme.palette.secondary.main})`,
     marginTop: 35,
     alignSelf: "center",
-    transition: 'all 0.35s ease-in-out',
+    transition: "all 0.35s ease-in-out",
 
     "&:hover": {
       opacity: 0.75,
@@ -143,7 +144,9 @@ const FlowPlanCards: FC = () => {
                 {val}
               </Grid>
             ))}
-            <PremiumButton>Go Premium</PremiumButton>
+            <PremiumButton onClick={() => router.push("/signup")}>
+              Go Premium
+            </PremiumButton>
           </Grid>
         </CardContent>
       </Card>
@@ -166,7 +169,11 @@ const FlowPlanCards: FC = () => {
                 {val}
               </Grid>
             ))}
-            <Button variant='contained' className={classes.btn}>
+            <Button
+              variant='contained'
+              className={classes.btn}
+              onClick={() => router.push("/signup")}
+            >
               Go Free
             </Button>
           </Grid>

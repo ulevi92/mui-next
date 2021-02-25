@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useMemo } from "react";
 import { ThemeProvider } from "@material-ui/core";
 
 import { darkTheme, theme } from "../theme/theme";
