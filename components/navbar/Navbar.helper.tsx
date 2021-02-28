@@ -19,6 +19,7 @@ const useStyles = makeStyles({
 
   centerButtons: {
     marginRight: 4,
+    borderRadius: 0,
 
     "&:last-of-type": {
       marginRight: 0,
@@ -27,6 +28,7 @@ const useStyles = makeStyles({
 
   authButtons: {
     marginRight: 24,
+    borderRadius: 0,
 
     "&:last-of-type": {
       marginRight: 0,
