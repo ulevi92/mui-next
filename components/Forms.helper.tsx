@@ -4,6 +4,7 @@ import {
   Fragment,
   SetStateAction,
   useCallback,
+  useEffect,
   useRef,
   useState,
 } from "react";
@@ -54,9 +55,7 @@ interface FormInputsProps {
   isEmail: boolean;
   isPassword: boolean;
   isConfirm?: boolean;
-  setEmailChecker: Dispatch<SetStateAction<boolean>>;
-  setPasswordChecker: Dispatch<SetStateAction<boolean>>;
-  setConfirmChecker?: Dispatch<SetStateAction<boolean>>;
+
   setSubmitCondition: Dispatch<
     SetStateAction<{
       email: string;
@@ -71,21 +70,44 @@ const FormInputs: FC<FormInputsProps> = ({
   isEmail,
   isPassword,
   isConfirm,
-  setEmailChecker,
-  setPasswordChecker,
-  setConfirmChecker,
+
   setSubmitCondition,
 }) => {
   const [showEmailError, setShowEmailError] = useState(false);
+
   const [showPasswordError, setShowPawsswordError] = useState(false);
   const [showConfirmError, setShowConfirmError] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+
+  const [emailChecker, setEmailChecker] = useState(false);
+  const [passwordChecker, setPasswordChecker] = useState(false);
+  const [confirmChecker, setConfirmChecker] = useState(false);
 
   const emailRef = useRef<HTMLInputElement>(null)!;
   const passwordRef = useRef<HTMLInputElement>(null)!;
   const confirmationRef = useRef<HTMLInputElement>(null)!;
 
   const classes = useStyles();
+
+  useEffect(() => {
+    if (emailChecker && passwordChecker && confirmChecker) {
+      setSubmitCondition({
+        email: emailRef.current?.value!,
+        password: passwordRef.current?.value!,
+        confirmPassword: confirmationRef.current?.value!,
+        canSubmit: true,
+      });
+    }
+
+    if (confirmationRef.current?.value!.length === 0 || confirmationRef.current?.value! !== passwordRef.current?.value!) {
+      setSubmitCondition({
+        email: emailRef.current?.value!,
+        password: passwordRef.current?.value!,
+        confirmPassword: confirmationRef.current?.value!,
+        canSubmit: false,
+      });
+    }
+  }, [confirmationRef.current?.value!]);
 
   const onEmailChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -113,12 +135,12 @@ const FormInputs: FC<FormInputsProps> = ({
       switch (schema.validate(e.currentTarget.value)) {
         case false:
           setShowPawsswordError(true);
-          setPasswordChecker(true);
+          setPasswordChecker(false);
           break;
 
         case true:
           setShowPawsswordError(false);
-          setPasswordChecker(false);
+          setPasswordChecker(true);
           break;
       }
 
@@ -168,6 +190,8 @@ const FormInputs: FC<FormInputsProps> = ({
     </SvgIcon>
   );
 
+  console.log("render");
+
   const renderFormInputs = [
     {
       ref: emailRef,
@@ -178,7 +202,13 @@ const FormInputs: FC<FormInputsProps> = ({
       ariaDescribedby: "email",
       name: "email",
       error: showEmailError ? true : false,
-      errorMsg: showEmailError ? "Please enter valid email address" : "",
+      errorMsg: showEmailError ? (
+        <FormHelperText className={classes.helperText}>
+          Please enter valid email address
+        </FormHelperText>
+      ) : (
+        ""
+      ),
       onChange: onEmailChange,
     },
 
@@ -191,9 +221,14 @@ const FormInputs: FC<FormInputsProps> = ({
       ariaDescribedby: "password",
       name: "password",
       error: showPasswordError ? true : false,
-      errorMsg: showPasswordError
-        ? "Password must be 8-16 letters, lowercase, uppercase, 1 symbole, and no spaces"
-        : "",
+      errorMsg: showPasswordError ? (
+        <FormHelperText className={classes.helperText}>
+          Password must be 8-16 letters, lowercase, uppercase, 1 symbole, and no
+          spaces
+        </FormHelperText>
+      ) : (
+        ""
+      ),
       onChange: onPasswordChange,
       renderShowPassword: renderShowpassword,
     },
@@ -207,7 +242,13 @@ const FormInputs: FC<FormInputsProps> = ({
       ariaDescribedby: "confirm",
       name: "confirm",
       error: showConfirmError ? true : false,
-      errorMsg: showConfirmError ? "Passwords do not match!" : "",
+      errorMsg: showConfirmError ? (
+        <FormHelperText className={classes.helperText}>
+          Passwords do not match!
+        </FormHelperText>
+      ) : (
+        ""
+      ),
       onChange: onConfirmChange,
       renderShowPassword: renderShowpassword,
     },

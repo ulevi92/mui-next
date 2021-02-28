@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Link from "next/link";
 
 import { makeStyles, Typography, Button, Grid } from "@material-ui/core";
@@ -57,9 +57,6 @@ interface InputsProps {
 }
 
 const Form: FC<InputsProps> = ({ isEmail, isPassword, isConfirm }) => {
-  const [emailChecker, setEmailChecker] = useState(false);
-  const [passwordChecker, setPasswordChecker] = useState(false);
-  const [confirmChecker, setConfirmChecker] = useState(false);
   const [submitCondition, setSubmitCondition] = useState({
     email: "",
     password: "",
@@ -84,9 +81,6 @@ const Form: FC<InputsProps> = ({ isEmail, isPassword, isConfirm }) => {
           isEmail
           isPassword
           isConfirm
-          setEmailChecker={setEmailChecker}
-          setPasswordChecker={setPasswordChecker}
-          setConfirmChecker={setConfirmChecker}
           setSubmitCondition={setSubmitCondition}
         />
         <Button
@@ -94,6 +88,7 @@ const Form: FC<InputsProps> = ({ isEmail, isPassword, isConfirm }) => {
           color='primary'
           className={classes.formBtn}
           type='submit'
+          disabled={!submitCondition.canSubmit ? true : false}
         >
           Sign up
         </Button>
