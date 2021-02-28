@@ -97,7 +97,36 @@ const Form: FC<InputsProps> = ({
       </Link>
     </Typography>
   ) : login ? (
-    <div></div>
+    <>
+      <Typography variant='subtitle2' className={classes.formSubtitle}>
+        Don't have an account?
+        <Link href='/signup'>
+          <a className={classes.formLink}>Signup</a>
+        </Link>
+      </Typography>
+      <Typography variant='subtitle2' className={classes.formSubtitle}>
+        Forgot your password?
+        <Link href='/resetpassword'>
+          <a className={classes.formLink}>Reset your password</a>
+        </Link>
+      </Typography>
+    </>
+  ) : remainder ? (
+    <>
+      <Typography variant='subtitle2' className={classes.formSubtitle}>
+        Don't have an account?
+        <Link href='/signup'>
+          <a className={classes.formLink}>Signup</a>
+        </Link>
+      </Typography>
+
+      <Typography variant='subtitle2' className={classes.formSubtitle}>
+        Already have an account?
+        <Link href='/login'>
+          <a className={classes.formLink}>Log in</a>
+        </Link>
+      </Typography>
+    </>
   ) : null;
 
   const renderForm = (
