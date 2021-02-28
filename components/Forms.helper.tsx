@@ -95,14 +95,14 @@ const FormInputs: FC<FormInputsProps> = ({
           setShowEmailError(false);
           break;
         case false:
-          setShowEmailError(true);
           setEmailChecker(false);
+          setShowEmailError(true);
           break;
       }
-      if (e.currentTarget.value.length >= 1) {
-        return setShowEmailError(true);
-      } else {
-        return setShowEmailError(false);
+
+      if (e.currentTarget.value.length === 0) {
+        setShowEmailError(false);
+        setEmailChecker(false);
       }
     },
     [emailRef]
