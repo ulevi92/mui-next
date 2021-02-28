@@ -52,25 +52,30 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 interface FormInputsProps {
-  isEmail: boolean;
-  isPassword: boolean;
-  isConfirm?: boolean;
+  remainder?: boolean;
+  login?: boolean;
+  signup?: boolean;
+  hasEmail: boolean;
+  hasPassword?: boolean;
+  hasConfirm?: boolean;
 
   setSubmitCondition: Dispatch<
     SetStateAction<{
-      email: string;
-      password: string;
-      confirmPassword: string;
+      email?: string;
+      password?: string;
+      confirmPassword?: string;
       canSubmit: boolean;
     }>
   >;
 }
 
 const FormInputs: FC<FormInputsProps> = ({
-  isEmail,
-  isPassword,
-  isConfirm,
-
+  hasEmail: hasEmail,
+  hasPassword: hasPassword,
+  hasConfirm: hasConfirm,
+  remainder,
+  login,
+  signup,
   setSubmitCondition,
 }) => {
   const [showEmailError, setShowEmailError] = useState(false);
@@ -89,25 +94,76 @@ const FormInputs: FC<FormInputsProps> = ({
 
   const classes = useStyles();
 
-  useEffect(() => {
-    if (emailChecker && passwordChecker && confirmChecker) {
-      setSubmitCondition({
-        email: emailRef.current?.value!,
-        password: passwordRef.current?.value!,
-        confirmPassword: confirmationRef.current?.value!,
-        canSubmit: true,
-      });
-    }
+  const signupEffect = () => {
+    signup &&
+    EmailValidator.validate(emailRef.current?.value!) &&
+    schema.validate(passwordRef.current?.value!) &&
+    confirmationRef.current?.value! === passwordRef.current?.value!
+      ? setSubmitCondition({
+          email: emailRef.current?.value!,
+          password: passwordRef.current?.value!,
+          confirmPassword: confirmationRef.current?.value!,
+          canSubmit: true,
+        })
+      : null;
 
-    if (confirmationRef.current?.value!.length === 0 || confirmationRef.current?.value! !== passwordRef.current?.value!) {
-      setSubmitCondition({
-        email: emailRef.current?.value!,
-        password: passwordRef.current?.value!,
-        confirmPassword: confirmationRef.current?.value!,
-        canSubmit: false,
-      });
-    }
-  }, [confirmationRef.current?.value!]);
+    (signup && confirmationRef.current?.value!.length === 0) ||
+    (signup && confirmationRef.current?.value! !== passwordRef.current?.value!)
+      ? setSubmitCondition({
+          canSubmit: false,
+        })
+      : null;
+  };
+
+  const loginEffect = () => {
+    login &&
+    EmailValidator.validate(emailRef.current?.value!) &&
+    schema.validate(passwordRef.current?.value!)
+      ? setSubmitCondition({
+          email: emailRef.current?.value!,
+          password: passwordRef.current?.value!,
+          canSubmit: true,
+        })
+      : null;
+
+    login && !schema.validate(passwordRef.current?.value!)
+      ? setSubmitCondition({
+          canSubmit: false,
+        })
+      : null;
+  };
+
+  const remainderEffect = () => {
+    remainder && EmailValidator.validate(emailRef.current?.value!)
+      ? setSubmitCondition({ email: emailRef.current?.value!, canSubmit: true })
+      : setSubmitCondition({
+          canSubmit: false,
+        });
+  };
+
+  useEffect(() => {
+    signup ? signupEffect() : null;
+
+    return () => {
+      signup ? signupEffect() : null;
+    };
+  }, [signup ? confirmationRef.current?.value! : null]);
+
+  useEffect(() => {
+    login ? loginEffect() : null;
+
+    return () => {
+      login ? loginEffect() : null;
+    };
+  }, [login ? passwordRef.current?.value! : null]);
+
+  useEffect(() => {
+    remainder ? remainderEffect() : null;
+
+    return () => {
+      remainder ? remainderEffect() : null;
+    };
+  }, [remainder ? emailRef.current?.value! : null]);
 
   const onEmailChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -190,10 +246,9 @@ const FormInputs: FC<FormInputsProps> = ({
     </SvgIcon>
   );
 
-  console.log("render");
-
   const renderFormInputs = [
     {
+      render: hasEmail ? true : false,
       ref: emailRef,
       id: "email",
       type: "email",
@@ -213,6 +268,7 @@ const FormInputs: FC<FormInputsProps> = ({
     },
 
     {
+      render: hasPassword ? true : false,
       ref: passwordRef,
       id: "password",
       type: showPassword ? "password" : "",
@@ -234,10 +290,11 @@ const FormInputs: FC<FormInputsProps> = ({
     },
 
     {
+      render: hasConfirm ? true : false,
       ref: confirmationRef,
       id: "confirm",
       type: showPassword ? "password" : "",
-      placeholder: "Enter confirm",
+      placeholder: "Confirm Password",
       htmlFor: "confirm",
       ariaDescribedby: "confirm",
       name: "confirm",
@@ -250,28 +307,29 @@ const FormInputs: FC<FormInputsProps> = ({
         ""
       ),
       onChange: onConfirmChange,
-      renderShowPassword: renderShowpassword,
     },
-  ].map((input, inputIndex) => (
-    <Fragment key={inputIndex}>
-      <FormControl className={classes.formControl}>
-        <InputLabel htmlFor={input.htmlFor} className={classes.label}>
-          {input.placeholder}
-        </InputLabel>
-        <Input
-          inputRef={input.ref}
-          type={input.type}
-          required
-          name={input.name}
-          error={input.error}
-          id={input.id}
-          aria-describedby={input.ariaDescribedby}
-          onChange={input.onChange}
-        />
-      </FormControl>
-      {input.errorMsg}
-    </Fragment>
-  ));
+  ].map((input, inputIndex) =>
+    input.render ? (
+      <Fragment key={inputIndex}>
+        <FormControl className={classes.formControl}>
+          <InputLabel htmlFor={input.htmlFor} className={classes.label}>
+            {input.placeholder}
+          </InputLabel>
+          <Input
+            inputRef={input.ref}
+            type={input.type}
+            required
+            name={input.name}
+            error={input.error}
+            id={input.id}
+            aria-describedby={input.ariaDescribedby}
+            onChange={input.onChange}
+          />
+        </FormControl>
+        {input.errorMsg}
+      </Fragment>
+    ) : null
+  );
   return <>{renderFormInputs}</>;
 };
 

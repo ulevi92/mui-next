@@ -1,8 +1,7 @@
 import Image from "next/image";
 
-import _ from "lodash";
-
-import { Grid, makeStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/styles";
+import { Grid } from "@material-ui/core";
 import Form from "../components/Form";
 
 const useStyles = makeStyles((theme) => ({
@@ -16,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Signup = () => {
+const Login = () => {
   const classes = useStyles();
 
   return (
@@ -32,9 +31,9 @@ const Signup = () => {
         className={classes.backgroundImage}
       />
 
-      <Form signup hasEmail hasPassword hasConfirm />
+      <Form login hasEmail hasPassword />
     </Grid>
   );
 };
 
-export default Signup;
+export default Login;

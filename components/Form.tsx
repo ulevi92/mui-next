@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     fontWeight: 600,
     marginBottom: 20,
+    textTransform: "capitalize",
   },
 
   formBtn: {
@@ -51,20 +52,53 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 interface InputsProps {
-  isEmail: boolean;
-  isPassword: boolean;
-  isConfirm?: boolean;
+  remainder?: boolean;
+  login?: boolean;
+  signup?: boolean;
+  hasEmail: boolean;
+  hasPassword?: boolean;
+  hasConfirm?: boolean;
 }
 
-const Form: FC<InputsProps> = ({ isEmail, isPassword, isConfirm }) => {
-  const [submitCondition, setSubmitCondition] = useState({
-    email: "",
-    password: "",
-    confirmPassword: "",
+interface InputState {
+  email?: string;
+  password?: string;
+  confirmPassword?: string;
+  canSubmit: boolean;
+}
+
+const Form: FC<InputsProps> = ({
+  hasEmail: hasEmail,
+  hasPassword: hasPassword,
+  hasConfirm: hasConfirm,
+  remainder,
+  login,
+  signup,
+}) => {
+  const [submitCondition, setSubmitCondition] = useState<InputState>({
     canSubmit: false,
   });
 
   const classes = useStyles();
+
+  const formCondition = signup
+    ? "signup"
+    : login
+    ? "login"
+    : remainder
+    ? "reset password"
+    : null;
+
+  const renderRedirect = signup ? (
+    <Typography variant='subtitle2' className={classes.formSubtitle}>
+      Already have an account?
+      <Link href='/login'>
+        <a className={classes.formLink}>Log in</a>
+      </Link>
+    </Typography>
+  ) : login ? (
+    <div></div>
+  ) : null;
 
   const renderForm = (
     <Grid
@@ -75,12 +109,15 @@ const Form: FC<InputsProps> = ({ isEmail, isPassword, isConfirm }) => {
     >
       <form action='' className={classes.form}>
         <Typography variant='h3' className={classes.formHeader}>
-          Sign up
+          {formCondition}
         </Typography>
         <FormInputs
-          isEmail
-          isPassword
-          isConfirm
+          signup={signup ? true : false}
+          login={login ? true : false}
+          remainder={remainder ? true : false}
+          hasEmail={hasEmail ? true : false}
+          hasPassword={hasPassword ? true : false}
+          hasConfirm={hasConfirm ? true : false}
           setSubmitCondition={setSubmitCondition}
         />
         <Button
@@ -90,17 +127,14 @@ const Form: FC<InputsProps> = ({ isEmail, isPassword, isConfirm }) => {
           type='submit'
           disabled={!submitCondition.canSubmit ? true : false}
         >
-          Sign up
+          {formCondition}
         </Button>
-        <Typography variant='subtitle2' className={classes.formSubtitle}>
-          Already have an account?
-          <Link href='/login'>
-            <a className={classes.formLink}>Log in</a>
-          </Link>
-        </Typography>
+        {renderRedirect}
       </form>
     </Grid>
   );
+
+  console.log(submitCondition);
 
   return <>{renderForm}</>;
 };
