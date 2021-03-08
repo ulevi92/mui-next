@@ -279,7 +279,7 @@ const FormInputs: FC<FormInputsProps> = ({
       error: showPasswordError ? true : false,
       errorMsg: showPasswordError ? (
         <FormHelperText className={classes.helperText}>
-          Password must be 8-16 letters, lowercase, uppercase, 1 symbole, and no
+          Password must be 8-16 letters, lowercase, uppercase, 1 symbol, and no
           spaces
         </FormHelperText>
       ) : (

@@ -41,7 +41,7 @@ const About = () => {
     "Firebase",
   ].map((item, i) => (
     <div key={i} className={classes.itemContainer}>
-      <SvgIcon color="primary">
+      <SvgIcon color='primary'>
         <CheckIcon />
       </SvgIcon>
       <Typography className={classes.item}>{item}</Typography>
@@ -53,12 +53,12 @@ const About = () => {
       <Head>
         <title>About</title>
         <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width"
+          name='viewport'
+          content='minimum-scale=1, initial-scale=1, width=device-width'
         />
       </Head>
 
-      <Typography className={classes.h1} variant="h4">
+      <Typography className={classes.h1} variant='h4'>
         Created By Uria Levi With:
       </Typography>
 
@@ -69,17 +69,17 @@ const About = () => {
           item
           xs={11}
           container
-          direction="column"
-          justify="center"
-          alignItems="flex-start"
+          direction='column'
+          justify='center'
+          alignItems='flex-start'
         >
           {renderCreatedList}
         </Grid>
       </Grid>
-      <Typography className={classes.h1} variant="h4">
+      <Typography className={classes.h1} variant='h4'>
         <a
-          target="_blank"
-          href="https://www.upwork.com/o/profiles/users/~0184fa6042c85fa083/"
+          target='_blank'
+          href='https://www.upwork.com/o/profiles/users/~0184fa6042c85fa083/'
         >
           Upwork profile
         </a>
